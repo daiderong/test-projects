@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
+	
+	<!-- 全注解实现AOP时必须加下边这段 -->
+ <aop:aspectj-autoproxy />   
+	
+	
+	
+	<!-- 以下为xml配置方式的aop -->
+	    <!-- <aop:config>
+	    	<aop:aspect ref="testServiceLog">
+	    		<aop:pointcut expression="execution(* com.test.aop.service..*(..))" id="testAop"/>
+	    		<aop:before method="beforLog" pointcut-ref="testAop"/>
+	    		<aop:after method="afterLog" pointcut-ref="testAop"/>
+	    	</aop:aspect>
+	    </aop:config> -->
+	      
+	
+	
+</beans>

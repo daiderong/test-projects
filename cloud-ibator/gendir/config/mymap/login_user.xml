@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="LoginUser">
+
+	<sql id="tableName" >
+		login_user
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	user_id userId ,
+	login_name loginName ,
+	login_pwd loginPwd ,
+	status status ,
+	full_name fullName ,
+	mobile mobile ,
+	email email ,
+	qq qq ,
+	last_login_time lastLoginTime ,
+	last_login_ip lastLoginIp ,
+	dept_id deptId ,
+	create_time createTime     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+  	
+  	<!-- 添加 -->
+	<insert id="create" parameterType="com.ichrono.admin.model.LoginUser" useGeneratedKeys="true"  keyProperty="userId">
+		INSERT INTO <include refid="tableName"/> 
+		(user_id,login_name,login_pwd,status,full_name,mobile,email,qq,last_login_time,last_login_ip,dept_id,create_time)
+		VALUES
+		(#{userId} ,#{loginName} ,#{loginPwd} ,#{status} ,#{fullName} ,#{mobile} ,#{email} ,#{qq} ,#{lastLoginTime} ,#{lastLoginIp} ,#{deptId} ,#{createTime} )
+	</insert>
+	
+	<!-- 批量 添加 -->
+	<insert id="create_BATCH"  parameterType="List" >
+		INSERT INTO <include refid="tableName"/> 
+		(user_id,login_name,login_pwd,status,full_name,mobile,email,qq,last_login_time,last_login_ip,dept_id,create_time)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.userId} ,#{item.loginName} ,#{item.loginPwd} ,#{item.status} ,#{item.fullName} ,#{item.mobile} ,#{item.email} ,#{item.qq} ,#{item.lastLoginTime} ,#{item.lastLoginIp} ,#{item.deptId} ,#{item.createTime} )
+		</foreach>
+	</insert>
+	
+	<delete id="deleteById" parameterType="Long">
+		DELETE FROM 
+		<include refid="tableName"/> 
+		WHERE user_id = #{userId}
+  	</delete>
+	
+	<select id="loadAll" resultType="com.ichrono.admin.model.LoginUser">
+		<include refid="selectColumns" />
+	</select>
+	
+	<select id="findById" resultType="com.ichrono.admin.model.LoginUser" 
+	parameterType="Long">
+		<include refid="selectColumns"/>   
+		WHERE user_id = #{userId}
+	</select>
+	
+	<sql id="pageConditions">
+	<where>
+			  	<if test="userId != null">AND user_id = #{userId}</if>
+				  	<if test="loginName != '' and loginName != null">AND login_name = #{loginName}</if>
+				  	<if test="loginPwd != '' and loginPwd != null">AND login_pwd = #{loginPwd}</if>
+				  	<if test="status != null">AND status = #{status}</if>
+				  	<if test="fullName != '' and fullName != null">AND full_name = #{fullName}</if>
+				  	<if test="mobile != '' and mobile != null">AND mobile = #{mobile}</if>
+				  	<if test="email != '' and email != null">AND email = #{email}</if>
+				  	<if test="qq != '' and qq != null">AND qq = #{qq}</if>
+				  	<if test="lastLoginTime != null">AND last_login_time = #{lastLoginTime}</if>
+				  	<if test="lastLoginIp != '' and lastLoginIp != null">AND last_login_ip = #{lastLoginIp}</if>
+				  	<if test="deptId != null">AND dept_id = #{deptId}</if>
+				  	<if test="createTime != null">AND create_time = #{createTime}</if>
+			</where>
+	</sql>
+	
+	<!-- 分页查询 -->
+	<select id="findPage" resultType="com.ichrono.admin.model.LoginUser"
+		parameterType="com.ichrono.admin.model.LoginUser">
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<if test="orderStr != '' and orderStr != null">
+				ORDER BY ${orderStr}
+		</if>
+	</select>
+	
+	<select id="findPage_COUNT" resultType="int" parameterType="com.ichrono.admin.model.LoginUser"> 
+		select count(1) from
+		<include refid="tableName" />
+		<include refid="pageConditions" />
+	</select>
+	
+	<sql id="update_sql">
+		UPDATE 
+		<include refid="tableName"/> 
+		<set>
+		  		<if test="loginName != null">login_name = #{loginName} ,</if>
+		  		<if test="loginPwd != null">login_pwd = #{loginPwd} ,</if>
+		  		<if test="status != null">status = #{status} ,</if>
+		  		<if test="fullName != null">full_name = #{fullName} ,</if>
+		  		<if test="mobile != null">mobile = #{mobile} ,</if>
+		  		<if test="email != null">email = #{email} ,</if>
+		  		<if test="qq != null">qq = #{qq} ,</if>
+		  		<if test="lastLoginTime != null">last_login_time = #{lastLoginTime} ,</if>
+		  		<if test="lastLoginIp != null">last_login_ip = #{lastLoginIp} ,</if>
+		  		<if test="deptId != null">dept_id = #{deptId} ,</if>
+		  		<if test="createTime != null">create_time = #{createTime} ,</if>
+			</set>
+		WHERE user_id = #{userId}
+	</sql>
+		
+	<update id="update" parameterType="com.ichrono.admin.model.LoginUser">
+		<include refid="update_sql"/>
+	</update>	
+		
+	
+
+</mapper>

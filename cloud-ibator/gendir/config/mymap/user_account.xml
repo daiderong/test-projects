@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="UserAccount">
+
+	<sql id="tableName" >
+		user_account
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	id id ,
+	account account ,
+	account_type accountType ,
+	mobile mobile ,
+	mobile_valid mobileValid ,
+	email email ,
+	email_valid emailValid ,
+	avatar avatar ,
+	avatar_flag avatarFlag ,
+	status status ,
+	nickname nickname ,
+	passwd passwd ,
+	fullname fullname ,
+	height height ,
+	weight weight ,
+	gender gender ,
+	birthday birthday ,
+	created_ip createdIp ,
+	created_at createdAt ,
+	updated_at updatedAt ,
+	last_login_at lastLoginAt ,
+	last_update_pwd lastUpdatePwd ,
+	created_client_info createdClientInfo ,
+	last_client_info lastClientInfo ,
+	created_app_id createdAppId ,
+	created_from_tag createdFromTag ,
+	last_app_id lastAppId ,
+	last_from_tag lastFromTag ,
+	signature signature     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+  	
+  	<!-- 添加 -->
+	<insert id="create" parameterType="com.wondersgroup.yfybx.userauth.model.UserAccount" useGeneratedKeys="true"  keyProperty="id">
+		INSERT INTO <include refid="tableName"/> 
+		(id,account,account_type,mobile,mobile_valid,email,email_valid,avatar,avatar_flag,status,nickname,passwd,fullname,height,weight,gender,birthday,created_ip,created_at,updated_at,last_login_at,last_update_pwd,created_client_info,last_client_info,created_app_id,created_from_tag,last_app_id,last_from_tag,signature)
+		VALUES
+		(#{id} ,#{account} ,#{accountType} ,#{mobile} ,#{mobileValid} ,#{email} ,#{emailValid} ,#{avatar} ,#{avatarFlag} ,#{status} ,#{nickname} ,#{passwd} ,#{fullname} ,#{height} ,#{weight} ,#{gender} ,#{birthday} ,#{createdIp} ,#{createdAt} ,#{updatedAt} ,#{lastLoginAt} ,#{lastUpdatePwd} ,#{createdClientInfo} ,#{lastClientInfo} ,#{createdAppId} ,#{createdFromTag} ,#{lastAppId} ,#{lastFromTag} ,#{signature} )
+	</insert>
+	
+	<!-- 批量 添加 -->
+	<insert id="create_BATCH"  parameterType="List" >
+		INSERT INTO <include refid="tableName"/> 
+		(id,account,account_type,mobile,mobile_valid,email,email_valid,avatar,avatar_flag,status,nickname,passwd,fullname,height,weight,gender,birthday,created_ip,created_at,updated_at,last_login_at,last_update_pwd,created_client_info,last_client_info,created_app_id,created_from_tag,last_app_id,last_from_tag,signature)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.id} ,#{item.account} ,#{item.accountType} ,#{item.mobile} ,#{item.mobileValid} ,#{item.email} ,#{item.emailValid} ,#{item.avatar} ,#{item.avatarFlag} ,#{item.status} ,#{item.nickname} ,#{item.passwd} ,#{item.fullname} ,#{item.height} ,#{item.weight} ,#{item.gender} ,#{item.birthday} ,#{item.createdIp} ,#{item.createdAt} ,#{item.updatedAt} ,#{item.lastLoginAt} ,#{item.lastUpdatePwd} ,#{item.createdClientInfo} ,#{item.lastClientInfo} ,#{item.createdAppId} ,#{item.createdFromTag} ,#{item.lastAppId} ,#{item.lastFromTag} ,#{item.signature} )
+		</foreach>
+	</insert>
+	
+	<delete id="deleteById" parameterType="Long">
+		DELETE FROM 
+		<include refid="tableName"/> 
+		WHERE id = #{id}
+  	</delete>
+	
+	<select id="loadAll" resultType="com.wondersgroup.yfybx.userauth.model.UserAccount">
+		<include refid="selectColumns" />
+	</select>
+	
+	<select id="findById" resultType="com.wondersgroup.yfybx.userauth.model.UserAccount" 
+	parameterType="Long">
+		<include refid="selectColumns"/>   
+		WHERE id = #{id}
+	</select>
+	
+	<sql id="pageConditions">
+	<where>
+			  	<if test="id != null">AND id = #{id}</if>
+				  	<if test="account != '' and account != null">AND account = #{account}</if>
+				  	<if test="accountType != null">AND account_type = #{accountType}</if>
+				  	<if test="mobile != '' and mobile != null">AND mobile = #{mobile}</if>
+				  	<if test="mobileValid != null">AND mobile_valid = #{mobileValid}</if>
+				  	<if test="email != '' and email != null">AND email = #{email}</if>
+				  	<if test="emailValid != null">AND email_valid = #{emailValid}</if>
+				  	<if test="avatar != '' and avatar != null">AND avatar = #{avatar}</if>
+				  	<if test="avatarFlag != null">AND avatar_flag = #{avatarFlag}</if>
+				  	<if test="status != null">AND status = #{status}</if>
+				  	<if test="nickname != '' and nickname != null">AND nickname = #{nickname}</if>
+				  	<if test="passwd != '' and passwd != null">AND passwd = #{passwd}</if>
+				  	<if test="fullname != '' and fullname != null">AND fullname = #{fullname}</if>
+				  	<if test="height != null">AND height = #{height}</if>
+				  	<if test="weight != null">AND weight = #{weight}</if>
+				  	<if test="gender != '' and gender != null">AND gender = #{gender}</if>
+				  	<if test="birthday != null">AND birthday = #{birthday}</if>
+				  	<if test="createdIp != '' and createdIp != null">AND created_ip = #{createdIp}</if>
+				  	<if test="createdAt != null">AND created_at = #{createdAt}</if>
+				  	<if test="updatedAt != null">AND updated_at = #{updatedAt}</if>
+				  	<if test="lastLoginAt != null">AND last_login_at = #{lastLoginAt}</if>
+				  	<if test="lastUpdatePwd != null">AND last_update_pwd = #{lastUpdatePwd}</if>
+				  	<if test="createdClientInfo != '' and createdClientInfo != null">AND created_client_info = #{createdClientInfo}</if>
+				  	<if test="lastClientInfo != '' and lastClientInfo != null">AND last_client_info = #{lastClientInfo}</if>
+				  	<if test="createdAppId != '' and createdAppId != null">AND created_app_id = #{createdAppId}</if>
+				  	<if test="createdFromTag != '' and createdFromTag != null">AND created_from_tag = #{createdFromTag}</if>
+				  	<if test="lastAppId != '' and lastAppId != null">AND last_app_id = #{lastAppId}</if>
+				  	<if test="lastFromTag != '' and lastFromTag != null">AND last_from_tag = #{lastFromTag}</if>
+				  	<if test="signature != '' and signature != null">AND signature = #{signature}</if>
+			</where>
+	</sql>
+	
+	<!-- 分页查询 -->
+	<select id="findPage" resultType="com.wondersgroup.yfybx.userauth.model.UserAccount"
+		parameterType="com.wondersgroup.yfybx.userauth.model.UserAccount">
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<if test="orderStr != '' and orderStr != null">
+				ORDER BY ${orderStr}
+		</if>
+	</select>
+	
+	<select id="findPage_COUNT" resultType="int" parameterType="com.wondersgroup.yfybx.userauth.model.UserAccount"> 
+		select count(1) from
+		<include refid="tableName" />
+		<include refid="pageConditions" />
+	</select>
+	
+	<sql id="update_sql">
+		UPDATE 
+		<include refid="tableName"/> 
+		<set>
+		  		<if test="account != null">account = #{account} ,</if>
+		  		<if test="accountType != null">account_type = #{accountType} ,</if>
+		  		<if test="mobile != null">mobile = #{mobile} ,</if>
+		  		<if test="mobileValid != null">mobile_valid = #{mobileValid} ,</if>
+		  		<if test="email != null">email = #{email} ,</if>
+		  		<if test="emailValid != null">email_valid = #{emailValid} ,</if>
+		  		<if test="avatar != null">avatar = #{avatar} ,</if>
+		  		<if test="avatarFlag != null">avatar_flag = #{avatarFlag} ,</if>
+		  		<if test="status != null">status = #{status} ,</if>
+		  		<if test="nickname != null">nickname = #{nickname} ,</if>
+		  		<if test="passwd != null">passwd = #{passwd} ,</if>
+		  		<if test="fullname != null">fullname = #{fullname} ,</if>
+		  		<if test="height != null">height = #{height} ,</if>
+		  		<if test="weight != null">weight = #{weight} ,</if>
+		  		<if test="gender != null">gender = #{gender} ,</if>
+		  		<if test="birthday != null">birthday = #{birthday} ,</if>
+		  		<if test="createdIp != null">created_ip = #{createdIp} ,</if>
+		  		<if test="createdAt != null">created_at = #{createdAt} ,</if>
+		  		<if test="updatedAt != null">updated_at = #{updatedAt} ,</if>
+		  		<if test="lastLoginAt != null">last_login_at = #{lastLoginAt} ,</if>
+		  		<if test="lastUpdatePwd != null">last_update_pwd = #{lastUpdatePwd} ,</if>
+		  		<if test="createdClientInfo != null">created_client_info = #{createdClientInfo} ,</if>
+		  		<if test="lastClientInfo != null">last_client_info = #{lastClientInfo} ,</if>
+		  		<if test="createdAppId != null">created_app_id = #{createdAppId} ,</if>
+		  		<if test="createdFromTag != null">created_from_tag = #{createdFromTag} ,</if>
+		  		<if test="lastAppId != null">last_app_id = #{lastAppId} ,</if>
+		  		<if test="lastFromTag != null">last_from_tag = #{lastFromTag} ,</if>
+		  		<if test="signature != null">signature = #{signature} ,</if>
+			</set>
+		WHERE id = #{id}
+	</sql>
+		
+	<update id="update" parameterType="com.wondersgroup.yfybx.userauth.model.UserAccount">
+		<include refid="update_sql"/>
+	</update>	
+		
+	
+
+</mapper>

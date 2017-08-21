@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.mytest.webservice</groupId>
+	<artifactId>test-webservice-client</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+
+	<name>test-https</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<axis2.version>1.6.2</axis2.version>
+	</properties>
+
+	<dependencies>
+
+
+	<dependency>
+        <groupId>org.apache.axis2</groupId>
+        <artifactId>axis2</artifactId>
+        <version>${axis2.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.axis2</groupId>
+        <artifactId>axis2-transport-http</artifactId>
+        <version>${axis2.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.axis2</groupId>
+        <artifactId>axis2-transport-local</artifactId>
+        <version>${axis2.version}</version>
+    </dependency>
+    
+		
+
+
+
+	</dependencies>
+</project>

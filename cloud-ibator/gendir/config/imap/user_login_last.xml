@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="UserLoginLast">
+
+	<typeAlias alias="UserLoginLast" type="com.wondersgroup.yfybx.userauth.model.UserLoginLast" />
+	
+	<sql id="tableName" >
+		user_login_last
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	token token ,
+	account account ,
+	user_id userId ,
+	from_tag fromTag ,
+	login_ip loginIp ,
+	created_at createdAt ,
+	last_login_at lastLoginAt ,
+	effi_at effiAt ,
+	logout logout ,
+	logout_at logoutAt ,
+	login_content loginContent ,
+	app_id appId ,
+	client_info clientInfo ,
+	signature signature     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+	
+	<insert id="create" parameterClass="UserLoginLast">
+		INSERT INTO <include refid="tableName"/> (		token,		account,		user_id,		from_tag,		login_ip,		created_at,		last_login_at,		effi_at,		logout,		logout_at,		login_content,		app_id,		client_info,		signature)
+		VALUES(#token# ,#account# ,#userId# ,#fromTag# ,#loginIp# ,#createdAt# ,#lastLoginAt# ,#effiAt# ,#logout# ,#logoutAt# ,#loginContent# ,#appId# ,#clientInfo# ,#signature# )
+		<selectKey resultClass="long" keyProperty="token">
+           SELECT last_insert_id() AS token
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterClass="Long">
+		DELETE FROM <include refid="tableName"/> 
+		WHERE token = #token#
+  	</delete>
+	
+	<select id="loadAll" resultClass="UserLoginLast">
+		<include refid="selectColumns"/> 
+	</select>
+	
+	<select id="findById" resultClass="UserLoginLast" parameterClass="Long">
+		<include refid="selectColumns"/>   
+		where token = #token#
+	</select>
+	
+	
+	<sql id="pageConditions">
+		WHERE 1=1
+		<dynamic>
+			<isNotEmpty property="token" prepend=" AND ">
+				token=#token#
+		  	</isNotEmpty>
+			<isNotEmpty property="account" prepend=" AND ">
+				account=#account#
+		  	</isNotEmpty>
+			<isNotEmpty property="userId" prepend=" AND ">
+				user_id=#userId#
+		  	</isNotEmpty>
+			<isNotEmpty property="fromTag" prepend=" AND ">
+				from_tag=#fromTag#
+		  	</isNotEmpty>
+			<isNotEmpty property="loginIp" prepend=" AND ">
+				login_ip=#loginIp#
+		  	</isNotEmpty>
+			<isNotEmpty property="logout" prepend=" AND ">
+				logout=#logout#
+		  	</isNotEmpty>
+			<isNotEmpty property="loginContent" prepend=" AND ">
+				login_content=#loginContent#
+		  	</isNotEmpty>
+			<isNotEmpty property="appId" prepend=" AND ">
+				app_id=#appId#
+		  	</isNotEmpty>
+			<isNotEmpty property="clientInfo" prepend=" AND ">
+				client_info=#clientInfo#
+		  	</isNotEmpty>
+			<isNotEmpty property="signature" prepend=" AND ">
+				signature=#signature#
+		  	</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	
+	<select id="findPage" resultClass="UserLoginLast" parameterClass="UserLoginLast" >
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<isNotEmpty prepend="ORDER BY" property="orderStr" >
+			$orderStr$
+		</isNotEmpty>
+		
+	</select>
+	<select id="findPage_COUNT" resultClass="int" parameterClass="com.wondersgroup.yfybx.userauth.model.UserLoginLast">
+		select count(1) from <include refid="tableName"/> 
+		<include refid="pageConditions"/>
+	</select>
+	
+	
+	<update id="update" parameterClass="UserLoginLast">
+		UPDATE <include refid="tableName"/> 
+		<dynamic prepend="set" >
+		<isNotNull prepend="," property="account">
+			account = #account#
+      	</isNotNull>
+		<isNotNull prepend="," property="userId">
+			user_id = #userId#
+      	</isNotNull>
+		<isNotNull prepend="," property="fromTag">
+			from_tag = #fromTag#
+      	</isNotNull>
+		<isNotNull prepend="," property="loginIp">
+			login_ip = #loginIp#
+      	</isNotNull>
+		<isNotNull prepend="," property="createdAt">
+			created_at = #createdAt#
+      	</isNotNull>
+		<isNotNull prepend="," property="lastLoginAt">
+			last_login_at = #lastLoginAt#
+      	</isNotNull>
+		<isNotNull prepend="," property="effiAt">
+			effi_at = #effiAt#
+      	</isNotNull>
+		<isNotNull prepend="," property="logout">
+			logout = #logout#
+      	</isNotNull>
+		<isNotNull prepend="," property="logoutAt">
+			logout_at = #logoutAt#
+      	</isNotNull>
+		<isNotNull prepend="," property="loginContent">
+			login_content = #loginContent#
+      	</isNotNull>
+		<isNotNull prepend="," property="appId">
+			app_id = #appId#
+      	</isNotNull>
+		<isNotNull prepend="," property="clientInfo">
+			client_info = #clientInfo#
+      	</isNotNull>
+		<isNotNull prepend="," property="signature">
+			signature = #signature#
+      	</isNotNull>
+		</dynamic>
+		WHERE token = #token#
+	</update>
+	
+	
+
+</sqlMap>

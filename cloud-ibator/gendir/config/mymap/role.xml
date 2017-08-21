@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Role">
+
+	<sql id="tableName" >
+		role
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	role_id roleId ,
+	name name ,
+	status status ,
+	remark remark ,
+	create_time createTime     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+  	
+  	<!-- 添加 -->
+	<insert id="create" parameterType="com.ichrono.admin.model.Role" useGeneratedKeys="true"  keyProperty="roleId">
+		INSERT INTO <include refid="tableName"/> 
+		(role_id,name,status,remark,create_time)
+		VALUES
+		(#{roleId} ,#{name} ,#{status} ,#{remark} ,#{createTime} )
+	</insert>
+	
+	<!-- 批量 添加 -->
+	<insert id="create_BATCH"  parameterType="List" >
+		INSERT INTO <include refid="tableName"/> 
+		(role_id,name,status,remark,create_time)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.roleId} ,#{item.name} ,#{item.status} ,#{item.remark} ,#{item.createTime} )
+		</foreach>
+	</insert>
+	
+	<delete id="deleteById" parameterType="Long">
+		DELETE FROM 
+		<include refid="tableName"/> 
+		WHERE role_id = #{roleId}
+  	</delete>
+	
+	<select id="loadAll" resultType="com.ichrono.admin.model.Role">
+		<include refid="selectColumns" />
+	</select>
+	
+	<select id="findById" resultType="com.ichrono.admin.model.Role" 
+	parameterType="Long">
+		<include refid="selectColumns"/>   
+		WHERE role_id = #{roleId}
+	</select>
+	
+	<sql id="pageConditions">
+	<where>
+			  	<if test="roleId != null">AND role_id = #{roleId}</if>
+				  	<if test="name != '' and name != null">AND name = #{name}</if>
+				  	<if test="status != null">AND status = #{status}</if>
+				  	<if test="remark != '' and remark != null">AND remark = #{remark}</if>
+				  	<if test="createTime != null">AND create_time = #{createTime}</if>
+			</where>
+	</sql>
+	
+	<!-- 分页查询 -->
+	<select id="findPage" resultType="com.ichrono.admin.model.Role"
+		parameterType="com.ichrono.admin.model.Role">
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<if test="orderStr != '' and orderStr != null">
+				ORDER BY ${orderStr}
+		</if>
+	</select>
+	
+	<select id="findPage_COUNT" resultType="int" parameterType="com.ichrono.admin.model.Role"> 
+		select count(1) from
+		<include refid="tableName" />
+		<include refid="pageConditions" />
+	</select>
+	
+	<sql id="update_sql">
+		UPDATE 
+		<include refid="tableName"/> 
+		<set>
+		  		<if test="name != null">name = #{name} ,</if>
+		  		<if test="status != null">status = #{status} ,</if>
+		  		<if test="remark != null">remark = #{remark} ,</if>
+		  		<if test="createTime != null">create_time = #{createTime} ,</if>
+			</set>
+		WHERE role_id = #{roleId}
+	</sql>
+		
+	<update id="update" parameterType="com.ichrono.admin.model.Role">
+		<include refid="update_sql"/>
+	</update>	
+		
+	
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 限定和mapper 接口名完全一致，包括包名 -->
+<mapper namespace="com.test.mapper.dao.UserMapper">
+
+	
+	<select  id="getById" resultType="com.test.mapper.model.User" parameterType="string">
+		SELECT * from user where username=#{username}
+	</select>
+	
+	<insert id="insert" parameterType="com.test.mapper.model.User"   >
+		INSERT INTO user values(#{username},#{password})
+	</insert>
+	
+	<select id="queryPager" resultType="com.test.mapper.model.User" parameterType="com.test.mapper.model.User">
+			
+			SELECT * FROM user
+			
+			<if test="orderBy != '' and orderBy != null">
+				ORDER BY ${orderBy}
+			</if>		
+	</select>
+	
+		
+	
+
+</mapper>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="UserRole">
+
+	<typeAlias alias="UserRole" type="com.ichrono.admin.model.UserRole" />
+	
+	<sql id="tableName" >
+		user_role
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	user_role_id userRoleId ,
+	user_id userId ,
+	role_id roleId     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+	
+	<insert id="create" parameterClass="UserRole">
+		INSERT INTO <include refid="tableName"/> (		user_role_id,		user_id,		role_id)
+		VALUES(#userRoleId# ,#userId# ,#roleId# )
+		<selectKey resultClass="long" keyProperty="user_role_id">
+           SELECT last_insert_id() AS userRoleId
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterClass="Long">
+		DELETE FROM <include refid="tableName"/> 
+		WHERE user_role_id = #userRoleId#
+  	</delete>
+	
+	<select id="loadAll" resultClass="UserRole">
+		<include refid="selectColumns"/> 
+	</select>
+	
+	<select id="findById" resultClass="UserRole" parameterClass="Long">
+		<include refid="selectColumns"/>   
+		where user_role_id = #userRoleId#
+	</select>
+	
+	
+	<sql id="pageConditions">
+		WHERE 1=1
+		<dynamic>
+			<isNotEmpty property="userRoleId" prepend=" AND ">
+				user_role_id=#userRoleId#
+		  	</isNotEmpty>
+			<isNotEmpty property="userId" prepend=" AND ">
+				user_id=#userId#
+		  	</isNotEmpty>
+			<isNotEmpty property="roleId" prepend=" AND ">
+				role_id=#roleId#
+		  	</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	
+	<select id="findPage" resultClass="UserRole" parameterClass="UserRole" >
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<isNotEmpty prepend="ORDER BY" property="orderStr" >
+			$orderStr$
+		</isNotEmpty>
+		
+	</select>
+	<select id="findPage_COUNT" resultClass="int" parameterClass="com.ichrono.admin.model.UserRole">
+		select count(1) from <include refid="tableName"/> 
+		<include refid="pageConditions"/>
+	</select>
+	
+	
+	<update id="update" parameterClass="UserRole">
+		UPDATE <include refid="tableName"/> 
+		<dynamic prepend="set" >
+		<isNotNull prepend="," property="userId">
+			user_id = #userId#
+      	</isNotNull>
+		<isNotNull prepend="," property="roleId">
+			role_id = #roleId#
+      	</isNotNull>
+		</dynamic>
+		WHERE user_role_id = #userRoleId#
+	</update>
+	
+	
+
+</sqlMap>

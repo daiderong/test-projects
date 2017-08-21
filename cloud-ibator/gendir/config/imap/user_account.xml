@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="UserAccount">
+
+	<typeAlias alias="UserAccount" type="com.wondersgroup.yfybx.userauth.model.UserAccount" />
+	
+	<sql id="tableName" >
+		user_account
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	id id ,
+	account account ,
+	account_type accountType ,
+	mobile mobile ,
+	mobile_valid mobileValid ,
+	email email ,
+	email_valid emailValid ,
+	avatar avatar ,
+	avatar_flag avatarFlag ,
+	status status ,
+	nickname nickname ,
+	passwd passwd ,
+	fullname fullname ,
+	height height ,
+	weight weight ,
+	gender gender ,
+	birthday birthday ,
+	created_ip createdIp ,
+	created_at createdAt ,
+	updated_at updatedAt ,
+	last_login_at lastLoginAt ,
+	last_update_pwd lastUpdatePwd ,
+	created_client_info createdClientInfo ,
+	last_client_info lastClientInfo ,
+	created_app_id createdAppId ,
+	created_from_tag createdFromTag ,
+	last_app_id lastAppId ,
+	last_from_tag lastFromTag ,
+	signature signature     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+	
+	<insert id="create" parameterClass="UserAccount">
+		INSERT INTO <include refid="tableName"/> (		id,		account,		account_type,		mobile,		mobile_valid,		email,		email_valid,		avatar,		avatar_flag,		status,		nickname,		passwd,		fullname,		height,		weight,		gender,		birthday,		created_ip,		created_at,		updated_at,		last_login_at,		last_update_pwd,		created_client_info,		last_client_info,		created_app_id,		created_from_tag,		last_app_id,		last_from_tag,		signature)
+		VALUES(#id# ,#account# ,#accountType# ,#mobile# ,#mobileValid# ,#email# ,#emailValid# ,#avatar# ,#avatarFlag# ,#status# ,#nickname# ,#passwd# ,#fullname# ,#height# ,#weight# ,#gender# ,#birthday# ,#createdIp# ,#createdAt# ,#updatedAt# ,#lastLoginAt# ,#lastUpdatePwd# ,#createdClientInfo# ,#lastClientInfo# ,#createdAppId# ,#createdFromTag# ,#lastAppId# ,#lastFromTag# ,#signature# )
+		<selectKey resultClass="long" keyProperty="id">
+           SELECT last_insert_id() AS id
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterClass="Long">
+		DELETE FROM <include refid="tableName"/> 
+		WHERE id = #id#
+  	</delete>
+	
+	<select id="loadAll" resultClass="UserAccount">
+		<include refid="selectColumns"/> 
+	</select>
+	
+	<select id="findById" resultClass="UserAccount" parameterClass="Long">
+		<include refid="selectColumns"/>   
+		where id = #id#
+	</select>
+	
+	
+	<sql id="pageConditions">
+		WHERE 1=1
+		<dynamic>
+			<isNotEmpty property="id" prepend=" AND ">
+				id=#id#
+		  	</isNotEmpty>
+			<isNotEmpty property="account" prepend=" AND ">
+				account=#account#
+		  	</isNotEmpty>
+			<isNotEmpty property="accountType" prepend=" AND ">
+				account_type=#accountType#
+		  	</isNotEmpty>
+			<isNotEmpty property="mobile" prepend=" AND ">
+				mobile=#mobile#
+		  	</isNotEmpty>
+			<isNotEmpty property="mobileValid" prepend=" AND ">
+				mobile_valid=#mobileValid#
+		  	</isNotEmpty>
+			<isNotEmpty property="email" prepend=" AND ">
+				email=#email#
+		  	</isNotEmpty>
+			<isNotEmpty property="emailValid" prepend=" AND ">
+				email_valid=#emailValid#
+		  	</isNotEmpty>
+			<isNotEmpty property="avatar" prepend=" AND ">
+				avatar=#avatar#
+		  	</isNotEmpty>
+			<isNotEmpty property="avatarFlag" prepend=" AND ">
+				avatar_flag=#avatarFlag#
+		  	</isNotEmpty>
+			<isNotEmpty property="status" prepend=" AND ">
+				status=#status#
+		  	</isNotEmpty>
+			<isNotEmpty property="nickname" prepend=" AND ">
+				nickname=#nickname#
+		  	</isNotEmpty>
+			<isNotEmpty property="passwd" prepend=" AND ">
+				passwd=#passwd#
+		  	</isNotEmpty>
+			<isNotEmpty property="fullname" prepend=" AND ">
+				fullname=#fullname#
+		  	</isNotEmpty>
+			<isNotEmpty property="height" prepend=" AND ">
+				height=#height#
+		  	</isNotEmpty>
+			<isNotEmpty property="gender" prepend=" AND ">
+				gender=#gender#
+		  	</isNotEmpty>
+			<isNotEmpty property="createdIp" prepend=" AND ">
+				created_ip=#createdIp#
+		  	</isNotEmpty>
+			<isNotEmpty property="createdClientInfo" prepend=" AND ">
+				created_client_info=#createdClientInfo#
+		  	</isNotEmpty>
+			<isNotEmpty property="lastClientInfo" prepend=" AND ">
+				last_client_info=#lastClientInfo#
+		  	</isNotEmpty>
+			<isNotEmpty property="createdAppId" prepend=" AND ">
+				created_app_id=#createdAppId#
+		  	</isNotEmpty>
+			<isNotEmpty property="createdFromTag" prepend=" AND ">
+				created_from_tag=#createdFromTag#
+		  	</isNotEmpty>
+			<isNotEmpty property="lastAppId" prepend=" AND ">
+				last_app_id=#lastAppId#
+		  	</isNotEmpty>
+			<isNotEmpty property="lastFromTag" prepend=" AND ">
+				last_from_tag=#lastFromTag#
+		  	</isNotEmpty>
+			<isNotEmpty property="signature" prepend=" AND ">
+				signature=#signature#
+		  	</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	
+	<select id="findPage" resultClass="UserAccount" parameterClass="UserAccount" >
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<isNotEmpty prepend="ORDER BY" property="orderStr" >
+			$orderStr$
+		</isNotEmpty>
+		
+	</select>
+	<select id="findPage_COUNT" resultClass="int" parameterClass="com.wondersgroup.yfybx.userauth.model.UserAccount">
+		select count(1) from <include refid="tableName"/> 
+		<include refid="pageConditions"/>
+	</select>
+	
+	
+	<update id="update" parameterClass="UserAccount">
+		UPDATE <include refid="tableName"/> 
+		<dynamic prepend="set" >
+		<isNotNull prepend="," property="account">
+			account = #account#
+      	</isNotNull>
+		<isNotNull prepend="," property="accountType">
+			account_type = #accountType#
+      	</isNotNull>
+		<isNotNull prepend="," property="mobile">
+			mobile = #mobile#
+      	</isNotNull>
+		<isNotNull prepend="," property="mobileValid">
+			mobile_valid = #mobileValid#
+      	</isNotNull>
+		<isNotNull prepend="," property="email">
+			email = #email#
+      	</isNotNull>
+		<isNotNull prepend="," property="emailValid">
+			email_valid = #emailValid#
+      	</isNotNull>
+		<isNotNull prepend="," property="avatar">
+			avatar = #avatar#
+      	</isNotNull>
+		<isNotNull prepend="," property="avatarFlag">
+			avatar_flag = #avatarFlag#
+      	</isNotNull>
+		<isNotNull prepend="," property="status">
+			status = #status#
+      	</isNotNull>
+		<isNotNull prepend="," property="nickname">
+			nickname = #nickname#
+      	</isNotNull>
+		<isNotNull prepend="," property="passwd">
+			passwd = #passwd#
+      	</isNotNull>
+		<isNotNull prepend="," property="fullname">
+			fullname = #fullname#
+      	</isNotNull>
+		<isNotNull prepend="," property="height">
+			height = #height#
+      	</isNotNull>
+		<isNotNull prepend="," property="weight">
+			weight = #weight#
+      	</isNotNull>
+		<isNotNull prepend="," property="gender">
+			gender = #gender#
+      	</isNotNull>
+		<isNotNull prepend="," property="birthday">
+			birthday = #birthday#
+      	</isNotNull>
+		<isNotNull prepend="," property="createdIp">
+			created_ip = #createdIp#
+      	</isNotNull>
+		<isNotNull prepend="," property="createdAt">
+			created_at = #createdAt#
+      	</isNotNull>
+		<isNotNull prepend="," property="updatedAt">
+			updated_at = #updatedAt#
+      	</isNotNull>
+		<isNotNull prepend="," property="lastLoginAt">
+			last_login_at = #lastLoginAt#
+      	</isNotNull>
+		<isNotNull prepend="," property="lastUpdatePwd">
+			last_update_pwd = #lastUpdatePwd#
+      	</isNotNull>
+		<isNotNull prepend="," property="createdClientInfo">
+			created_client_info = #createdClientInfo#
+      	</isNotNull>
+		<isNotNull prepend="," property="lastClientInfo">
+			last_client_info = #lastClientInfo#
+      	</isNotNull>
+		<isNotNull prepend="," property="createdAppId">
+			created_app_id = #createdAppId#
+      	</isNotNull>
+		<isNotNull prepend="," property="createdFromTag">
+			created_from_tag = #createdFromTag#
+      	</isNotNull>
+		<isNotNull prepend="," property="lastAppId">
+			last_app_id = #lastAppId#
+      	</isNotNull>
+		<isNotNull prepend="," property="lastFromTag">
+			last_from_tag = #lastFromTag#
+      	</isNotNull>
+		<isNotNull prepend="," property="signature">
+			signature = #signature#
+      	</isNotNull>
+		</dynamic>
+		WHERE id = #id#
+	</update>
+	
+	
+
+</sqlMap>

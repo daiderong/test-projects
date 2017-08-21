@@ -1,0 +1,85 @@
+2016-04-27 17:34:25,550 INFO  autogen.Gen - 开始执行DAO代码生成===========================
+2016-04-27 17:34:25,551 INFO  autogen.Settings - 开始初始化数据库环境,路径为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/】
+2016-04-27 17:34:25,557 INFO  autogen.Settings - 找到DB属性配置文件,文件名为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】
+2016-04-27 17:34:25,560 WARN  autogen.Settings - 模版路径：config/
+2016-04-27 17:34:25,560 WARN  autogen.Settings - 代码生成输出路径：/Users/ddr/git/test-projects/cloud-ibator/gendir/
+2016-04-27 17:34:25,560 INFO  autogen.Settings - 代码生成环境配置信息如下：
+2016-04-27 17:34:25,560 INFO  autogen.Settings - DB_USER=dev
+2016-04-27 17:34:25,561 INFO  autogen.Settings - JAVA_PACKAGE=com.healthcare.utils.model
+2016-04-27 17:34:25,561 INFO  autogen.Settings - DB_NAME=utils
+2016-04-27 17:34:25,561 INFO  autogen.Settings - DB_PWD=dev_shuomao
+2016-04-27 17:34:25,561 INFO  autogen.Settings - DB_TYPE=Mysql
+2016-04-27 17:34:25,561 INFO  autogen.Settings - DB_SERVER=dev.sm
+2016-04-27 17:34:25,561 INFO  autogen.Settings - 结束初始化数据库代码生成环境【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】！
+2016-04-27 17:34:25,562 INFO  autogen.DbConn - 初始化数据库[utils]连接！
+2016-04-27 17:34:28,797 INFO  autogen.DbConn - 初始化数据库[utils]连接【OK】！
+2016-04-27 17:34:28,804 INFO  autogen.DbConn - ===============================数据库支持的数据类型:
+2016-04-27 17:34:28,805 INFO  autogen.DbConn - 类型名称【BIT                 】SqlType【-7   】最大精度【1         】
+2016-04-27 17:34:28,805 INFO  autogen.DbConn - 类型名称【BOOL                】SqlType【-7   】最大精度【1         】
+2016-04-27 17:34:28,805 INFO  autogen.DbConn - 类型名称【TINYINT             】SqlType【-6   】最大精度【3         】
+2016-04-27 17:34:28,806 INFO  autogen.DbConn - 类型名称【TINYINT UNSIGNED    】SqlType【-6   】最大精度【3         】
+2016-04-27 17:34:28,806 INFO  autogen.DbConn - 类型名称【BIGINT              】SqlType【-5   】最大精度【19        】
+2016-04-27 17:34:28,806 INFO  autogen.DbConn - 类型名称【BIGINT UNSIGNED     】SqlType【-5   】最大精度【20        】
+2016-04-27 17:34:28,806 INFO  autogen.DbConn - 类型名称【LONG VARBINARY      】SqlType【-4   】最大精度【16777215  】
+2016-04-27 17:34:28,807 INFO  autogen.DbConn - 类型名称【MEDIUMBLOB          】SqlType【-4   】最大精度【16777215  】
+2016-04-27 17:34:28,807 INFO  autogen.DbConn - 类型名称【LONGBLOB            】SqlType【-4   】最大精度【2147483647】
+2016-04-27 17:34:28,807 INFO  autogen.DbConn - 类型名称【BLOB                】SqlType【-4   】最大精度【65535     】
+2016-04-27 17:34:28,807 INFO  autogen.DbConn - 类型名称【TINYBLOB            】SqlType【-4   】最大精度【255       】
+2016-04-27 17:34:28,808 INFO  autogen.DbConn - 类型名称【VARBINARY           】SqlType【-3   】最大精度【255       】
+2016-04-27 17:34:28,808 INFO  autogen.DbConn - 类型名称【BINARY              】SqlType【-2   】最大精度【255       】
+2016-04-27 17:34:28,808 INFO  autogen.DbConn - 类型名称【LONG VARCHAR        】SqlType【-1   】最大精度【16777215  】
+2016-04-27 17:34:28,808 INFO  autogen.DbConn - 类型名称【MEDIUMTEXT          】SqlType【-1   】最大精度【16777215  】
+2016-04-27 17:34:28,809 INFO  autogen.DbConn - 类型名称【LONGTEXT            】SqlType【-1   】最大精度【2147483647】
+2016-04-27 17:34:28,809 INFO  autogen.DbConn - 类型名称【TEXT                】SqlType【-1   】最大精度【65535     】
+2016-04-27 17:34:28,809 INFO  autogen.DbConn - 类型名称【TINYTEXT            】SqlType【-1   】最大精度【255       】
+2016-04-27 17:34:28,809 INFO  autogen.DbConn - 类型名称【CHAR                】SqlType【1    】最大精度【255       】
+2016-04-27 17:34:28,809 INFO  autogen.DbConn - 类型名称【NUMERIC             】SqlType【2    】最大精度【65        】
+2016-04-27 17:34:28,810 INFO  autogen.DbConn - 类型名称【DECIMAL             】SqlType【3    】最大精度【65        】
+2016-04-27 17:34:28,810 INFO  autogen.DbConn - 类型名称【INTEGER             】SqlType【4    】最大精度【10        】
+2016-04-27 17:34:28,810 INFO  autogen.DbConn - 类型名称【INTEGER UNSIGNED    】SqlType【4    】最大精度【10        】
+2016-04-27 17:34:28,810 INFO  autogen.DbConn - 类型名称【INT                 】SqlType【4    】最大精度【10        】
+2016-04-27 17:34:28,811 INFO  autogen.DbConn - 类型名称【INT UNSIGNED        】SqlType【4    】最大精度【10        】
+2016-04-27 17:34:28,811 INFO  autogen.DbConn - 类型名称【MEDIUMINT           】SqlType【4    】最大精度【7         】
+2016-04-27 17:34:28,811 INFO  autogen.DbConn - 类型名称【MEDIUMINT UNSIGNED  】SqlType【4    】最大精度【8         】
+2016-04-27 17:34:28,811 INFO  autogen.DbConn - 类型名称【SMALLINT            】SqlType【5    】最大精度【5         】
+2016-04-27 17:34:28,811 INFO  autogen.DbConn - 类型名称【SMALLINT UNSIGNED   】SqlType【5    】最大精度【5         】
+2016-04-27 17:34:28,812 INFO  autogen.DbConn - 类型名称【FLOAT               】SqlType【7    】最大精度【10        】
+2016-04-27 17:34:28,812 INFO  autogen.DbConn - 类型名称【DOUBLE              】SqlType【8    】最大精度【17        】
+2016-04-27 17:34:28,812 INFO  autogen.DbConn - 类型名称【DOUBLE PRECISION    】SqlType【8    】最大精度【17        】
+2016-04-27 17:34:28,812 INFO  autogen.DbConn - 类型名称【REAL                】SqlType【8    】最大精度【17        】
+2016-04-27 17:34:28,813 INFO  autogen.DbConn - 类型名称【VARCHAR             】SqlType【12   】最大精度【255       】
+2016-04-27 17:34:28,813 INFO  autogen.DbConn - 类型名称【ENUM                】SqlType【12   】最大精度【65535     】
+2016-04-27 17:34:28,813 INFO  autogen.DbConn - 类型名称【SET                 】SqlType【12   】最大精度【64        】
+2016-04-27 17:34:28,814 INFO  autogen.DbConn - 类型名称【DATE                】SqlType【91   】最大精度【0         】
+2016-04-27 17:34:28,814 INFO  autogen.DbConn - 类型名称【TIME                】SqlType【92   】最大精度【0         】
+2016-04-27 17:34:28,814 INFO  autogen.DbConn - 类型名称【DATETIME            】SqlType【93   】最大精度【0         】
+2016-04-27 17:34:28,815 INFO  autogen.DbConn - 类型名称【TIMESTAMP           】SqlType【93   】最大精度【0         】
+2016-04-27 17:34:28,815 INFO  autogen.DbConn - 数据库类型【MySQL】数据库版本【5.5.43-log】数据库驱动名称【MySQL Connector Java】数据库驱动程序版本【mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )】
+2016-04-27 17:34:29,060 INFO  autogen.AllTableInf - ============================获取所有表结构信息：
+2016-04-27 17:34:29,061 INFO  autogen.AllTableInf - Schema名【utils     】表名【app_version              】表类型【TABLE     】表注释【                              】
+2016-04-27 17:34:29,061 INFO  autogen.AllTableInf - Schema名【utils     】表名【city                     】表类型【TABLE     】表注释【                              】
+2016-04-27 17:34:29,062 INFO  autogen.AllTableInf - Schema名【utils     】表名【error_collection         】表类型【TABLE     】表注释【                              】
+2016-04-27 17:34:29,062 INFO  autogen.AllTableInf - Schema名【utils     】表名【ip_to_addr               】表类型【TABLE     】表注释【                              】
+2016-04-27 17:34:29,062 INFO  autogen.AllTableInf - Schema名【utils     】表名【mobile_to_addr           】表类型【TABLE     】表注释【                              】
+2016-04-27 17:34:29,062 INFO  autogen.AllTableInf - Schema名【utils     】表名【provincial               】表类型【TABLE     】表注释【                              】
+2016-04-27 17:34:29,063 INFO  autogen.AllTableInf - ============================获取所有表主键信息：
+2016-04-27 17:34:29,369 INFO  autogen.AllTableInf - Schema名【utils     】表名【provincial               】主键列名【id        】主键列序号【1 】主键名称【PRIMARY        】
+2016-04-27 17:34:30,084 INFO  autogen.AllTableInf - Schema名【utils     】表名【city                     】主键列名【id        】主键列序号【1 】主键名称【PRIMARY        】
+2016-04-27 17:34:30,104 INFO  autogen.Gen - 共有2个表需要生成数据访问层.
+2016-04-27 17:34:30,104 INFO  autogen.Gen - 第1个表[provincial]sqlMap正在生成中...
+2016-04-27 17:34:30,104 INFO  autogen.AllTableInf - 开始生成表对象，表名：provincial
+2016-04-27 17:34:31,216 INFO  autogen.AllTableInf - 表名【provincial               】列名【id             】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【0    】列isAutocrement【NO   】
+2016-04-27 17:34:31,218 INFO  autogen.AllTableInf - 表名【provincial               】列名【name           】列sqltype【12 】列typename【VARCHAR   】列precision【50   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-04-27 17:34:31,218 INFO  autogen.AllTableInf - 表名【provincial               】列名【first_pinying  】列sqltype【12 】列typename【VARCHAR   】列precision【1    】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-04-27 17:34:31,219 INFO  autogen.AllTableInf - 生成表对象成功，表名：provincial
+2016-04-27 17:34:31,309 INFO  util.VelocityTemplate - 初始化Velocity成功，配置路径为：/Users/ddr/git/test-projects/cloud-ibator/target/classes/velocity.properties
+2016-04-27 17:34:31,371 INFO  autogen.Gen - Provincial.java
+2016-04-27 17:34:31,507 INFO  autogen.Gen - 第2个表[city]sqlMap正在生成中...
+2016-04-27 17:34:31,508 INFO  autogen.AllTableInf - 开始生成表对象，表名：city
+2016-04-27 17:34:32,644 INFO  autogen.AllTableInf - 表名【city                     】列名【id             】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-04-27 17:34:32,644 INFO  autogen.AllTableInf - 表名【city                     】列名【name           】列sqltype【12 】列typename【VARCHAR   】列precision【50   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-04-27 17:34:32,644 INFO  autogen.AllTableInf - 表名【city                     】列名【provice_id     】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-04-27 17:34:32,644 INFO  autogen.AllTableInf - 生成表对象成功，表名：city
+2016-04-27 17:34:32,684 INFO  autogen.Gen - City.java
+2016-04-27 17:34:32,824 INFO  autogen.Gen - 实际生成2个表的sqlMap！
+2016-04-27 17:34:32,825 INFO  autogen.Gen - 结束执行DAO代码生成===========================

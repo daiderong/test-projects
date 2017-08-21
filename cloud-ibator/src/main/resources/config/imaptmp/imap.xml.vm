@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="${tbb.className}">
+
+	<typeAlias alias="${tbb.className}" type="$!{gb.packageName}.${tbb.className}" />
+	
+	<sql id="tableName" >
+		${tbb.tableName}
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+#foreach($cb in $tbb.colList)
+	$!{cb.colName} $!{cb.propertyName} #{if}($velocityCount != $tbb.colList.size()),
+#{end}
+#end
+    FROM 
+    <include refid="tableName"/> t
+  	</sql>
+	
+	<insert id="create" parameterClass="${tbb.className}">
+		INSERT INTO <include refid="tableName"/> (#foreach($cb in $tbb.colList)
+		$!{cb.colName}#{if}($velocityCount != $tbb.colList.size()),#{end}#end)
+		VALUES(#foreach($cb in $tbb.colList)#$!{cb.propertyName}# #{if}($velocityCount != $tbb.colList.size()),#{end}#end)
+		<selectKey resultClass="long" keyProperty="$!{tbb.pkcol.colName}">
+           SELECT last_insert_id() AS $!{tbb.pkcol.propertyName}
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterClass="${tbb.pkcol.propertyType}">
+		DELETE FROM <include refid="tableName"/> 
+		WHERE $!{tbb.pkcol.colName} = #$!{tbb.pkcol.propertyName}#
+  	</delete>
+	
+	<select id="loadAll" resultClass="${tbb.className}">
+		<include refid="selectColumns"/> 
+	</select>
+	
+	<select id="findById" resultClass="${tbb.className}" parameterClass="${tbb.pkcol.propertyType}">
+		<include refid="selectColumns"/>   
+		where $!{tbb.pkcol.colName} = #$!{tbb.pkcol.propertyName}#
+	</select>
+	
+	
+	<sql id="pageConditions">
+		WHERE 1=1
+		<dynamic>
+#foreach($cb in $tbb.colList)
+#if($cb.propertyType=="String"||$cb.propertyType=="Long"||$cb.propertyType=="Integer")
+			<isNotEmpty property="$!cb.propertyName" prepend=" AND ">
+				$!{cb.colName}=#$!{cb.propertyName}#
+		  	</isNotEmpty>
+#end
+#end
+		</dynamic>
+	</sql>
+	
+	
+	<select id="findPage" resultClass="${tbb.className}" parameterClass="${tbb.className}" >
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<isNotEmpty prepend="ORDER BY" property="orderStr" >
+			$orderStr$
+		</isNotEmpty>
+		
+	</select>
+	<select id="findPage_COUNT" resultClass="int" parameterClass="$!{gb.packageName}.${tbb.className}">
+		select count(1) from <include refid="tableName"/> 
+		<include refid="pageConditions"/>
+	</select>
+	
+	
+	<update id="update" parameterClass="${tbb.className}">
+		UPDATE <include refid="tableName"/> 
+		<dynamic prepend="set" >
+#foreach($cb in $tbb.colList)
+#if($!{cb.colName}!=$!{tbb.pkcol.colName})
+		<isNotNull prepend="," property="$!{cb.propertyName}">
+			$!{cb.colName} = #$!{cb.propertyName}#
+      	</isNotNull>
+#end
+#end
+		</dynamic>
+		WHERE $!{tbb.pkcol.colName} = #$!{tbb.pkcol.propertyName}#
+	</update>
+	
+	
+
+</sqlMap>

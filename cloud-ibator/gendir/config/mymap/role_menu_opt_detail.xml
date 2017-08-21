@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="RoleMenuOptDetail">
+
+	<sql id="tableName" >
+		role_menu_opt_detail
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	role_menu_opt_id roleMenuOptId ,
+	role_id roleId ,
+	menu_id menuId ,
+	data_query dataQuery ,
+	data_add dataAdd ,
+	data_update dataUpdate ,
+	data_delete dataDelete ,
+	data_export dataExport     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+  	
+  	<!-- 添加 -->
+	<insert id="create" parameterType="com.ichrono.admin.model.RoleMenuOptDetail" useGeneratedKeys="true"  keyProperty="roleMenuOptId">
+		INSERT INTO <include refid="tableName"/> 
+		(role_menu_opt_id,role_id,menu_id,data_query,data_add,data_update,data_delete,data_export)
+		VALUES
+		(#{roleMenuOptId} ,#{roleId} ,#{menuId} ,#{dataQuery} ,#{dataAdd} ,#{dataUpdate} ,#{dataDelete} ,#{dataExport} )
+	</insert>
+	
+	<!-- 批量 添加 -->
+	<insert id="create_BATCH"  parameterType="List" >
+		INSERT INTO <include refid="tableName"/> 
+		(role_menu_opt_id,role_id,menu_id,data_query,data_add,data_update,data_delete,data_export)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.roleMenuOptId} ,#{item.roleId} ,#{item.menuId} ,#{item.dataQuery} ,#{item.dataAdd} ,#{item.dataUpdate} ,#{item.dataDelete} ,#{item.dataExport} )
+		</foreach>
+	</insert>
+	
+	<delete id="deleteById" parameterType="Long">
+		DELETE FROM 
+		<include refid="tableName"/> 
+		WHERE role_menu_opt_id = #{roleMenuOptId}
+  	</delete>
+	
+	<select id="loadAll" resultType="com.ichrono.admin.model.RoleMenuOptDetail">
+		<include refid="selectColumns" />
+	</select>
+	
+	<select id="findById" resultType="com.ichrono.admin.model.RoleMenuOptDetail" 
+	parameterType="Long">
+		<include refid="selectColumns"/>   
+		WHERE role_menu_opt_id = #{roleMenuOptId}
+	</select>
+	
+	<sql id="pageConditions">
+	<where>
+			  	<if test="roleMenuOptId != null">AND role_menu_opt_id = #{roleMenuOptId}</if>
+				  	<if test="roleId != null">AND role_id = #{roleId}</if>
+				  	<if test="menuId != null">AND menu_id = #{menuId}</if>
+				  	<if test="dataQuery != null">AND data_query = #{dataQuery}</if>
+				  	<if test="dataAdd != null">AND data_add = #{dataAdd}</if>
+				  	<if test="dataUpdate != null">AND data_update = #{dataUpdate}</if>
+				  	<if test="dataDelete != null">AND data_delete = #{dataDelete}</if>
+				  	<if test="dataExport != null">AND data_export = #{dataExport}</if>
+			</where>
+	</sql>
+	
+	<!-- 分页查询 -->
+	<select id="findPage" resultType="com.ichrono.admin.model.RoleMenuOptDetail"
+		parameterType="com.ichrono.admin.model.RoleMenuOptDetail">
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<if test="orderStr != '' and orderStr != null">
+				ORDER BY ${orderStr}
+		</if>
+	</select>
+	
+	<select id="findPage_COUNT" resultType="int" parameterType="com.ichrono.admin.model.RoleMenuOptDetail"> 
+		select count(1) from
+		<include refid="tableName" />
+		<include refid="pageConditions" />
+	</select>
+	
+	<sql id="update_sql">
+		UPDATE 
+		<include refid="tableName"/> 
+		<set>
+		  		<if test="roleId != null">role_id = #{roleId} ,</if>
+		  		<if test="menuId != null">menu_id = #{menuId} ,</if>
+		  		<if test="dataQuery != null">data_query = #{dataQuery} ,</if>
+		  		<if test="dataAdd != null">data_add = #{dataAdd} ,</if>
+		  		<if test="dataUpdate != null">data_update = #{dataUpdate} ,</if>
+		  		<if test="dataDelete != null">data_delete = #{dataDelete} ,</if>
+		  		<if test="dataExport != null">data_export = #{dataExport} ,</if>
+			</set>
+		WHERE role_menu_opt_id = #{roleMenuOptId}
+	</sql>
+		
+	<update id="update" parameterType="com.ichrono.admin.model.RoleMenuOptDetail">
+		<include refid="update_sql"/>
+	</update>	
+		
+	
+
+</mapper>

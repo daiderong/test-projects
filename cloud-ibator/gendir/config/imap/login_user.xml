@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="LoginUser">
+
+	<typeAlias alias="LoginUser" type="com.ichrono.admin.model.LoginUser" />
+	
+	<sql id="tableName" >
+		login_user
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	user_id userId ,
+	login_name loginName ,
+	login_pwd loginPwd ,
+	status status ,
+	full_name fullName ,
+	mobile mobile ,
+	email email ,
+	qq qq ,
+	last_login_time lastLoginTime ,
+	last_login_ip lastLoginIp ,
+	dept_id deptId ,
+	create_time createTime     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+	
+	<insert id="create" parameterClass="LoginUser">
+		INSERT INTO <include refid="tableName"/> (		user_id,		login_name,		login_pwd,		status,		full_name,		mobile,		email,		qq,		last_login_time,		last_login_ip,		dept_id,		create_time)
+		VALUES(#userId# ,#loginName# ,#loginPwd# ,#status# ,#fullName# ,#mobile# ,#email# ,#qq# ,#lastLoginTime# ,#lastLoginIp# ,#deptId# ,#createTime# )
+		<selectKey resultClass="long" keyProperty="user_id">
+           SELECT last_insert_id() AS userId
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterClass="Long">
+		DELETE FROM <include refid="tableName"/> 
+		WHERE user_id = #userId#
+  	</delete>
+	
+	<select id="loadAll" resultClass="LoginUser">
+		<include refid="selectColumns"/> 
+	</select>
+	
+	<select id="findById" resultClass="LoginUser" parameterClass="Long">
+		<include refid="selectColumns"/>   
+		where user_id = #userId#
+	</select>
+	
+	
+	<sql id="pageConditions">
+		WHERE 1=1
+		<dynamic>
+			<isNotEmpty property="userId" prepend=" AND ">
+				user_id=#userId#
+		  	</isNotEmpty>
+			<isNotEmpty property="loginName" prepend=" AND ">
+				login_name=#loginName#
+		  	</isNotEmpty>
+			<isNotEmpty property="loginPwd" prepend=" AND ">
+				login_pwd=#loginPwd#
+		  	</isNotEmpty>
+			<isNotEmpty property="status" prepend=" AND ">
+				status=#status#
+		  	</isNotEmpty>
+			<isNotEmpty property="fullName" prepend=" AND ">
+				full_name=#fullName#
+		  	</isNotEmpty>
+			<isNotEmpty property="mobile" prepend=" AND ">
+				mobile=#mobile#
+		  	</isNotEmpty>
+			<isNotEmpty property="email" prepend=" AND ">
+				email=#email#
+		  	</isNotEmpty>
+			<isNotEmpty property="qq" prepend=" AND ">
+				qq=#qq#
+		  	</isNotEmpty>
+			<isNotEmpty property="lastLoginIp" prepend=" AND ">
+				last_login_ip=#lastLoginIp#
+		  	</isNotEmpty>
+			<isNotEmpty property="deptId" prepend=" AND ">
+				dept_id=#deptId#
+		  	</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	
+	<select id="findPage" resultClass="LoginUser" parameterClass="LoginUser" >
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<isNotEmpty prepend="ORDER BY" property="orderStr" >
+			$orderStr$
+		</isNotEmpty>
+		
+	</select>
+	<select id="findPage_COUNT" resultClass="int" parameterClass="com.ichrono.admin.model.LoginUser">
+		select count(1) from <include refid="tableName"/> 
+		<include refid="pageConditions"/>
+	</select>
+	
+	
+	<update id="update" parameterClass="LoginUser">
+		UPDATE <include refid="tableName"/> 
+		<dynamic prepend="set" >
+		<isNotNull prepend="," property="loginName">
+			login_name = #loginName#
+      	</isNotNull>
+		<isNotNull prepend="," property="loginPwd">
+			login_pwd = #loginPwd#
+      	</isNotNull>
+		<isNotNull prepend="," property="status">
+			status = #status#
+      	</isNotNull>
+		<isNotNull prepend="," property="fullName">
+			full_name = #fullName#
+      	</isNotNull>
+		<isNotNull prepend="," property="mobile">
+			mobile = #mobile#
+      	</isNotNull>
+		<isNotNull prepend="," property="email">
+			email = #email#
+      	</isNotNull>
+		<isNotNull prepend="," property="qq">
+			qq = #qq#
+      	</isNotNull>
+		<isNotNull prepend="," property="lastLoginTime">
+			last_login_time = #lastLoginTime#
+      	</isNotNull>
+		<isNotNull prepend="," property="lastLoginIp">
+			last_login_ip = #lastLoginIp#
+      	</isNotNull>
+		<isNotNull prepend="," property="deptId">
+			dept_id = #deptId#
+      	</isNotNull>
+		<isNotNull prepend="," property="createTime">
+			create_time = #createTime#
+      	</isNotNull>
+		</dynamic>
+		WHERE user_id = #userId#
+	</update>
+	
+	
+
+</sqlMap>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="UserLoginLog">
+
+	<typeAlias alias="UserLoginLog" type="com.wondersgroup.yfybx.userauth.model.UserLoginLog" />
+	
+	<sql id="tableName" >
+		user_login_log
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	uuid uuid ,
+	account account ,
+	user_id userId ,
+	token token ,
+	from_tag fromTag ,
+	login_ip loginIp ,
+	created_at createdAt ,
+	app_id appId ,
+	client_info clientInfo ,
+	signature signature     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+	
+	<insert id="create" parameterClass="UserLoginLog">
+		INSERT INTO <include refid="tableName"/> (		uuid,		account,		user_id,		token,		from_tag,		login_ip,		created_at,		app_id,		client_info,		signature)
+		VALUES(#uuid# ,#account# ,#userId# ,#token# ,#fromTag# ,#loginIp# ,#createdAt# ,#appId# ,#clientInfo# ,#signature# )
+		<selectKey resultClass="long" keyProperty="uuid">
+           SELECT last_insert_id() AS uuid
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterClass="Long">
+		DELETE FROM <include refid="tableName"/> 
+		WHERE uuid = #uuid#
+  	</delete>
+	
+	<select id="loadAll" resultClass="UserLoginLog">
+		<include refid="selectColumns"/> 
+	</select>
+	
+	<select id="findById" resultClass="UserLoginLog" parameterClass="Long">
+		<include refid="selectColumns"/>   
+		where uuid = #uuid#
+	</select>
+	
+	
+	<sql id="pageConditions">
+		WHERE 1=1
+		<dynamic>
+			<isNotEmpty property="uuid" prepend=" AND ">
+				uuid=#uuid#
+		  	</isNotEmpty>
+			<isNotEmpty property="account" prepend=" AND ">
+				account=#account#
+		  	</isNotEmpty>
+			<isNotEmpty property="userId" prepend=" AND ">
+				user_id=#userId#
+		  	</isNotEmpty>
+			<isNotEmpty property="token" prepend=" AND ">
+				token=#token#
+		  	</isNotEmpty>
+			<isNotEmpty property="fromTag" prepend=" AND ">
+				from_tag=#fromTag#
+		  	</isNotEmpty>
+			<isNotEmpty property="loginIp" prepend=" AND ">
+				login_ip=#loginIp#
+		  	</isNotEmpty>
+			<isNotEmpty property="appId" prepend=" AND ">
+				app_id=#appId#
+		  	</isNotEmpty>
+			<isNotEmpty property="clientInfo" prepend=" AND ">
+				client_info=#clientInfo#
+		  	</isNotEmpty>
+			<isNotEmpty property="signature" prepend=" AND ">
+				signature=#signature#
+		  	</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	
+	<select id="findPage" resultClass="UserLoginLog" parameterClass="UserLoginLog" >
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<isNotEmpty prepend="ORDER BY" property="orderStr" >
+			$orderStr$
+		</isNotEmpty>
+		
+	</select>
+	<select id="findPage_COUNT" resultClass="int" parameterClass="com.wondersgroup.yfybx.userauth.model.UserLoginLog">
+		select count(1) from <include refid="tableName"/> 
+		<include refid="pageConditions"/>
+	</select>
+	
+	
+	<update id="update" parameterClass="UserLoginLog">
+		UPDATE <include refid="tableName"/> 
+		<dynamic prepend="set" >
+		<isNotNull prepend="," property="account">
+			account = #account#
+      	</isNotNull>
+		<isNotNull prepend="," property="userId">
+			user_id = #userId#
+      	</isNotNull>
+		<isNotNull prepend="," property="token">
+			token = #token#
+      	</isNotNull>
+		<isNotNull prepend="," property="fromTag">
+			from_tag = #fromTag#
+      	</isNotNull>
+		<isNotNull prepend="," property="loginIp">
+			login_ip = #loginIp#
+      	</isNotNull>
+		<isNotNull prepend="," property="createdAt">
+			created_at = #createdAt#
+      	</isNotNull>
+		<isNotNull prepend="," property="appId">
+			app_id = #appId#
+      	</isNotNull>
+		<isNotNull prepend="," property="clientInfo">
+			client_info = #clientInfo#
+      	</isNotNull>
+		<isNotNull prepend="," property="signature">
+			signature = #signature#
+      	</isNotNull>
+		</dynamic>
+		WHERE uuid = #uuid#
+	</update>
+	
+	
+
+</sqlMap>

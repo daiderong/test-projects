@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="AuthParther">
+
+	<typeAlias alias="AuthParther" type="com.wondersgroup.yfybx.userauth.model.AuthParther" />
+	
+	<sql id="tableName" >
+		auth_parther
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	partner_id partnerId ,
+	parther_key partherKey ,
+	parther_name partherName ,
+	authed_status authedStatus ,
+	created_at createdAt     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+	
+	<insert id="create" parameterClass="AuthParther">
+		INSERT INTO <include refid="tableName"/> (		partner_id,		parther_key,		parther_name,		authed_status,		created_at)
+		VALUES(#partnerId# ,#partherKey# ,#partherName# ,#authedStatus# ,#createdAt# )
+		<selectKey resultClass="long" keyProperty="partner_id">
+           SELECT last_insert_id() AS partnerId
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterClass="Long">
+		DELETE FROM <include refid="tableName"/> 
+		WHERE partner_id = #partnerId#
+  	</delete>
+	
+	<select id="loadAll" resultClass="AuthParther">
+		<include refid="selectColumns"/> 
+	</select>
+	
+	<select id="findById" resultClass="AuthParther" parameterClass="Long">
+		<include refid="selectColumns"/>   
+		where partner_id = #partnerId#
+	</select>
+	
+	
+	<sql id="pageConditions">
+		WHERE 1=1
+		<dynamic>
+			<isNotEmpty property="partnerId" prepend=" AND ">
+				partner_id=#partnerId#
+		  	</isNotEmpty>
+			<isNotEmpty property="partherKey" prepend=" AND ">
+				parther_key=#partherKey#
+		  	</isNotEmpty>
+			<isNotEmpty property="partherName" prepend=" AND ">
+				parther_name=#partherName#
+		  	</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	
+	<select id="findPage" resultClass="AuthParther" parameterClass="AuthParther" >
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<isNotEmpty prepend="ORDER BY" property="orderStr" >
+			$orderStr$
+		</isNotEmpty>
+		
+	</select>
+	<select id="findPage_COUNT" resultClass="int" parameterClass="com.wondersgroup.yfybx.userauth.model.AuthParther">
+		select count(1) from <include refid="tableName"/> 
+		<include refid="pageConditions"/>
+	</select>
+	
+	
+	<update id="update" parameterClass="AuthParther">
+		UPDATE <include refid="tableName"/> 
+		<dynamic prepend="set" >
+		<isNotNull prepend="," property="partherKey">
+			parther_key = #partherKey#
+      	</isNotNull>
+		<isNotNull prepend="," property="partherName">
+			parther_name = #partherName#
+      	</isNotNull>
+		<isNotNull prepend="," property="authedStatus">
+			authed_status = #authedStatus#
+      	</isNotNull>
+		<isNotNull prepend="," property="createdAt">
+			created_at = #createdAt#
+      	</isNotNull>
+		</dynamic>
+		WHERE partner_id = #partnerId#
+	</update>
+	
+	
+
+</sqlMap>

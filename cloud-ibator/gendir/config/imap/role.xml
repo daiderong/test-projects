@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Role">
+
+	<typeAlias alias="Role" type="com.ichrono.admin.model.Role" />
+	
+	<sql id="tableName" >
+		role
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	role_id roleId ,
+	name name ,
+	status status ,
+	remark remark ,
+	create_time createTime     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+	
+	<insert id="create" parameterClass="Role">
+		INSERT INTO <include refid="tableName"/> (		role_id,		name,		status,		remark,		create_time)
+		VALUES(#roleId# ,#name# ,#status# ,#remark# ,#createTime# )
+		<selectKey resultClass="long" keyProperty="role_id">
+           SELECT last_insert_id() AS roleId
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterClass="Long">
+		DELETE FROM <include refid="tableName"/> 
+		WHERE role_id = #roleId#
+  	</delete>
+	
+	<select id="loadAll" resultClass="Role">
+		<include refid="selectColumns"/> 
+	</select>
+	
+	<select id="findById" resultClass="Role" parameterClass="Long">
+		<include refid="selectColumns"/>   
+		where role_id = #roleId#
+	</select>
+	
+	
+	<sql id="pageConditions">
+		WHERE 1=1
+		<dynamic>
+			<isNotEmpty property="roleId" prepend=" AND ">
+				role_id=#roleId#
+		  	</isNotEmpty>
+			<isNotEmpty property="name" prepend=" AND ">
+				name=#name#
+		  	</isNotEmpty>
+			<isNotEmpty property="status" prepend=" AND ">
+				status=#status#
+		  	</isNotEmpty>
+			<isNotEmpty property="remark" prepend=" AND ">
+				remark=#remark#
+		  	</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	
+	<select id="findPage" resultClass="Role" parameterClass="Role" >
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<isNotEmpty prepend="ORDER BY" property="orderStr" >
+			$orderStr$
+		</isNotEmpty>
+		
+	</select>
+	<select id="findPage_COUNT" resultClass="int" parameterClass="com.ichrono.admin.model.Role">
+		select count(1) from <include refid="tableName"/> 
+		<include refid="pageConditions"/>
+	</select>
+	
+	
+	<update id="update" parameterClass="Role">
+		UPDATE <include refid="tableName"/> 
+		<dynamic prepend="set" >
+		<isNotNull prepend="," property="name">
+			name = #name#
+      	</isNotNull>
+		<isNotNull prepend="," property="status">
+			status = #status#
+      	</isNotNull>
+		<isNotNull prepend="," property="remark">
+			remark = #remark#
+      	</isNotNull>
+		<isNotNull prepend="," property="createTime">
+			create_time = #createTime#
+      	</isNotNull>
+		</dynamic>
+		WHERE role_id = #roleId#
+	</update>
+	
+	
+
+</sqlMap>

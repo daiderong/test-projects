@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Dept">
+
+	<sql id="tableName" >
+		dept
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	dept_id deptId ,
+	name name ,
+	parent_id parentId ,
+	position position ,
+	create_time createTime     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+  	
+  	<!-- 添加 -->
+	<insert id="create" parameterType="com.ichrono.admin.model.Dept" useGeneratedKeys="true"  keyProperty="deptId">
+		INSERT INTO <include refid="tableName"/> 
+		(dept_id,name,parent_id,position,create_time)
+		VALUES
+		(#{deptId} ,#{name} ,#{parentId} ,#{position} ,#{createTime} )
+	</insert>
+	
+	<!-- 批量 添加 -->
+	<insert id="create_BATCH"  parameterType="List" >
+		INSERT INTO <include refid="tableName"/> 
+		(dept_id,name,parent_id,position,create_time)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.deptId} ,#{item.name} ,#{item.parentId} ,#{item.position} ,#{item.createTime} )
+		</foreach>
+	</insert>
+	
+	<delete id="deleteById" parameterType="Long">
+		DELETE FROM 
+		<include refid="tableName"/> 
+		WHERE dept_id = #{deptId}
+  	</delete>
+	
+	<select id="loadAll" resultType="com.ichrono.admin.model.Dept">
+		<include refid="selectColumns" />
+	</select>
+	
+	<select id="findById" resultType="com.ichrono.admin.model.Dept" 
+	parameterType="Long">
+		<include refid="selectColumns"/>   
+		WHERE dept_id = #{deptId}
+	</select>
+	
+	<sql id="pageConditions">
+	<where>
+			  	<if test="deptId != null">AND dept_id = #{deptId}</if>
+				  	<if test="name != '' and name != null">AND name = #{name}</if>
+				  	<if test="parentId != null">AND parent_id = #{parentId}</if>
+				  	<if test="position != null">AND position = #{position}</if>
+				  	<if test="createTime != null">AND create_time = #{createTime}</if>
+			</where>
+	</sql>
+	
+	<!-- 分页查询 -->
+	<select id="findPage" resultType="com.ichrono.admin.model.Dept"
+		parameterType="com.ichrono.admin.model.Dept">
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<if test="orderStr != '' and orderStr != null">
+				ORDER BY ${orderStr}
+		</if>
+	</select>
+	
+	<select id="findPage_COUNT" resultType="int" parameterType="com.ichrono.admin.model.Dept"> 
+		select count(1) from
+		<include refid="tableName" />
+		<include refid="pageConditions" />
+	</select>
+	
+	<sql id="update_sql">
+		UPDATE 
+		<include refid="tableName"/> 
+		<set>
+		  		<if test="name != null">name = #{name} ,</if>
+		  		<if test="parentId != null">parent_id = #{parentId} ,</if>
+		  		<if test="position != null">position = #{position} ,</if>
+		  		<if test="createTime != null">create_time = #{createTime} ,</if>
+			</set>
+		WHERE dept_id = #{deptId}
+	</sql>
+		
+	<update id="update" parameterType="com.ichrono.admin.model.Dept">
+		<include refid="update_sql"/>
+	</update>	
+		
+	
+
+</mapper>

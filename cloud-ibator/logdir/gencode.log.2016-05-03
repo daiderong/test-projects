@@ -1,0 +1,220 @@
+2016-05-03 13:34:14,525 INFO  autogen.Gen - 开始执行DAO代码生成===========================
+2016-05-03 13:34:14,527 INFO  autogen.Settings - 开始初始化数据库环境,路径为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/】
+2016-05-03 13:34:14,535 INFO  autogen.Settings - 找到DB属性配置文件,文件名为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】
+2016-05-03 13:34:14,540 WARN  autogen.Settings - 模版路径：config/
+2016-05-03 13:34:14,540 WARN  autogen.Settings - 代码生成输出路径：/Users/ddr/git/test-projects/cloud-ibator/gendir/
+2016-05-03 13:34:14,540 INFO  autogen.Settings - 代码生成环境配置信息如下：
+2016-05-03 13:34:14,541 INFO  autogen.Settings - DB_USER=dev
+2016-05-03 13:34:14,541 INFO  autogen.Settings - JAVA_PACKAGE=com.healthcare.utils.model
+2016-05-03 13:34:14,541 INFO  autogen.Settings - DB_NAME=utils
+2016-05-03 13:34:14,541 INFO  autogen.Settings - DB_PWD=dev_shuomao
+2016-05-03 13:34:14,541 INFO  autogen.Settings - DB_TYPE=Mysql
+2016-05-03 13:34:14,541 INFO  autogen.Settings - DB_SERVER=dev.sm
+2016-05-03 13:34:14,541 INFO  autogen.Settings - 结束初始化数据库代码生成环境【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】！
+2016-05-03 13:34:14,543 INFO  autogen.DbConn - 初始化数据库[utils]连接！
+2016-05-03 13:34:15,271 INFO  autogen.DbConn - 初始化数据库[utils]连接【OK】！
+2016-05-03 13:34:15,281 INFO  autogen.DbConn - ===============================数据库支持的数据类型:
+2016-05-03 13:34:15,283 INFO  autogen.DbConn - 类型名称【BIT                 】SqlType【-7   】最大精度【1         】
+2016-05-03 13:34:15,283 INFO  autogen.DbConn - 类型名称【BOOL                】SqlType【-7   】最大精度【1         】
+2016-05-03 13:34:15,283 INFO  autogen.DbConn - 类型名称【TINYINT             】SqlType【-6   】最大精度【3         】
+2016-05-03 13:34:15,283 INFO  autogen.DbConn - 类型名称【TINYINT UNSIGNED    】SqlType【-6   】最大精度【3         】
+2016-05-03 13:34:15,283 INFO  autogen.DbConn - 类型名称【BIGINT              】SqlType【-5   】最大精度【19        】
+2016-05-03 13:34:15,284 INFO  autogen.DbConn - 类型名称【BIGINT UNSIGNED     】SqlType【-5   】最大精度【20        】
+2016-05-03 13:34:15,284 INFO  autogen.DbConn - 类型名称【LONG VARBINARY      】SqlType【-4   】最大精度【16777215  】
+2016-05-03 13:34:15,284 INFO  autogen.DbConn - 类型名称【MEDIUMBLOB          】SqlType【-4   】最大精度【16777215  】
+2016-05-03 13:34:15,284 INFO  autogen.DbConn - 类型名称【LONGBLOB            】SqlType【-4   】最大精度【2147483647】
+2016-05-03 13:34:15,284 INFO  autogen.DbConn - 类型名称【BLOB                】SqlType【-4   】最大精度【65535     】
+2016-05-03 13:34:15,284 INFO  autogen.DbConn - 类型名称【TINYBLOB            】SqlType【-4   】最大精度【255       】
+2016-05-03 13:34:15,285 INFO  autogen.DbConn - 类型名称【VARBINARY           】SqlType【-3   】最大精度【65535     】
+2016-05-03 13:34:15,285 INFO  autogen.DbConn - 类型名称【BINARY              】SqlType【-2   】最大精度【255       】
+2016-05-03 13:34:15,285 INFO  autogen.DbConn - 类型名称【LONG VARCHAR        】SqlType【-1   】最大精度【16777215  】
+2016-05-03 13:34:15,285 INFO  autogen.DbConn - 类型名称【MEDIUMTEXT          】SqlType【-1   】最大精度【16777215  】
+2016-05-03 13:34:15,285 INFO  autogen.DbConn - 类型名称【LONGTEXT            】SqlType【-1   】最大精度【2147483647】
+2016-05-03 13:34:15,286 INFO  autogen.DbConn - 类型名称【TEXT                】SqlType【-1   】最大精度【65535     】
+2016-05-03 13:34:15,286 INFO  autogen.DbConn - 类型名称【TINYTEXT            】SqlType【-1   】最大精度【255       】
+2016-05-03 13:34:15,286 INFO  autogen.DbConn - 类型名称【CHAR                】SqlType【1    】最大精度【255       】
+2016-05-03 13:34:15,286 INFO  autogen.DbConn - 类型名称【NUMERIC             】SqlType【2    】最大精度【65        】
+2016-05-03 13:34:15,286 INFO  autogen.DbConn - 类型名称【DECIMAL             】SqlType【3    】最大精度【65        】
+2016-05-03 13:34:15,287 INFO  autogen.DbConn - 类型名称【INTEGER             】SqlType【4    】最大精度【10        】
+2016-05-03 13:34:15,287 INFO  autogen.DbConn - 类型名称【INTEGER UNSIGNED    】SqlType【4    】最大精度【10        】
+2016-05-03 13:34:15,287 INFO  autogen.DbConn - 类型名称【INT                 】SqlType【4    】最大精度【10        】
+2016-05-03 13:34:15,287 INFO  autogen.DbConn - 类型名称【INT UNSIGNED        】SqlType【4    】最大精度【10        】
+2016-05-03 13:34:15,287 INFO  autogen.DbConn - 类型名称【MEDIUMINT           】SqlType【4    】最大精度【7         】
+2016-05-03 13:34:15,287 INFO  autogen.DbConn - 类型名称【MEDIUMINT UNSIGNED  】SqlType【4    】最大精度【8         】
+2016-05-03 13:34:15,288 INFO  autogen.DbConn - 类型名称【SMALLINT            】SqlType【5    】最大精度【5         】
+2016-05-03 13:34:15,288 INFO  autogen.DbConn - 类型名称【SMALLINT UNSIGNED   】SqlType【5    】最大精度【5         】
+2016-05-03 13:34:15,288 INFO  autogen.DbConn - 类型名称【FLOAT               】SqlType【7    】最大精度【10        】
+2016-05-03 13:34:15,288 INFO  autogen.DbConn - 类型名称【DOUBLE              】SqlType【8    】最大精度【17        】
+2016-05-03 13:34:15,288 INFO  autogen.DbConn - 类型名称【DOUBLE PRECISION    】SqlType【8    】最大精度【17        】
+2016-05-03 13:34:15,288 INFO  autogen.DbConn - 类型名称【REAL                】SqlType【8    】最大精度【17        】
+2016-05-03 13:34:15,289 INFO  autogen.DbConn - 类型名称【VARCHAR             】SqlType【12   】最大精度【65535     】
+2016-05-03 13:34:15,289 INFO  autogen.DbConn - 类型名称【ENUM                】SqlType【12   】最大精度【65535     】
+2016-05-03 13:34:15,289 INFO  autogen.DbConn - 类型名称【SET                 】SqlType【12   】最大精度【64        】
+2016-05-03 13:34:15,289 INFO  autogen.DbConn - 类型名称【DATE                】SqlType【91   】最大精度【0         】
+2016-05-03 13:34:15,289 INFO  autogen.DbConn - 类型名称【TIME                】SqlType【92   】最大精度【0         】
+2016-05-03 13:34:15,289 INFO  autogen.DbConn - 类型名称【DATETIME            】SqlType【93   】最大精度【0         】
+2016-05-03 13:34:15,290 INFO  autogen.DbConn - 类型名称【TIMESTAMP           】SqlType【93   】最大精度【0         】
+2016-05-03 13:34:15,290 INFO  autogen.DbConn - 数据库类型【MySQL】数据库版本【5.5.43-log】数据库驱动名称【MySQL Connector Java】数据库驱动程序版本【mysql-connector-java-5.1.38 ( Revision: fe541c166cec739c74cc727c5da96c1028b4834a )】
+2016-05-03 13:34:15,334 INFO  autogen.AllTableInf - ============================获取所有表结构信息：
+2016-05-03 13:34:15,335 INFO  autogen.AllTableInf - Schema名【utils     】表名【app_version              】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,335 INFO  autogen.AllTableInf - Schema名【utils     】表名【city                     】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,335 INFO  autogen.AllTableInf - Schema名【utils     】表名【error_collection         】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,336 INFO  autogen.AllTableInf - Schema名【utils     】表名【ip_to_addr               】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,336 INFO  autogen.AllTableInf - Schema名【utils     】表名【mobile_to_addr           】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,336 INFO  autogen.AllTableInf - Schema名【utils     】表名【provincial               】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,336 ERROR autogen.AllTableInf - 指定的表[org_optional_province]不存在，不生成此表！
+2016-05-03 13:34:15,337 INFO  autogen.AllTableInf - ============================获取所有表主键信息：
+2016-05-03 13:34:15,389 INFO  autogen.AllTableInf - ============================获取所有表结构信息：
+2016-05-03 13:34:15,389 INFO  autogen.AllTableInf - Schema名【utils     】表名【app_version              】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,389 INFO  autogen.AllTableInf - Schema名【utils     】表名【city                     】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,390 INFO  autogen.AllTableInf - Schema名【utils     】表名【error_collection         】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,390 INFO  autogen.AllTableInf - Schema名【utils     】表名【ip_to_addr               】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,390 INFO  autogen.AllTableInf - Schema名【utils     】表名【mobile_to_addr           】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,391 INFO  autogen.AllTableInf - Schema名【utils     】表名【provincial               】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:15,391 ERROR autogen.AllTableInf - 指定的表[org_optional_province]不存在，不生成此表！
+2016-05-03 13:34:15,391 INFO  autogen.Gen - 共有0个表需要生成数据访问层.
+2016-05-03 13:34:15,391 INFO  autogen.Gen - 实际生成0个表的sqlMap！
+2016-05-03 13:34:15,393 INFO  autogen.Gen - 结束执行DAO代码生成===========================
+2016-05-03 13:34:37,934 INFO  autogen.Gen - 开始执行DAO代码生成===========================
+2016-05-03 13:34:37,936 INFO  autogen.Settings - 开始初始化数据库环境,路径为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/】
+2016-05-03 13:34:37,941 INFO  autogen.Settings - 找到DB属性配置文件,文件名为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】
+2016-05-03 13:34:37,944 WARN  autogen.Settings - 模版路径：config/
+2016-05-03 13:34:37,944 WARN  autogen.Settings - 代码生成输出路径：/Users/ddr/git/test-projects/cloud-ibator/gendir/
+2016-05-03 13:34:37,944 INFO  autogen.Settings - 代码生成环境配置信息如下：
+2016-05-03 13:34:37,945 INFO  autogen.Settings - DB_USER=dev
+2016-05-03 13:34:37,945 INFO  autogen.Settings - JAVA_PACKAGE=com.healthcare.utils.model
+2016-05-03 13:34:37,945 INFO  autogen.Settings - DB_NAME=core_asthma
+2016-05-03 13:34:37,945 INFO  autogen.Settings - DB_PWD=dev_shuomao
+2016-05-03 13:34:37,945 INFO  autogen.Settings - DB_TYPE=Mysql
+2016-05-03 13:34:37,945 INFO  autogen.Settings - DB_SERVER=dev.sm
+2016-05-03 13:34:37,946 INFO  autogen.Settings - 结束初始化数据库代码生成环境【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】！
+2016-05-03 13:34:37,946 INFO  autogen.DbConn - 初始化数据库[core_asthma]连接！
+2016-05-03 13:34:38,472 INFO  autogen.DbConn - 初始化数据库[core_asthma]连接【OK】！
+2016-05-03 13:34:38,482 INFO  autogen.DbConn - ===============================数据库支持的数据类型:
+2016-05-03 13:34:38,483 INFO  autogen.DbConn - 类型名称【BIT                 】SqlType【-7   】最大精度【1         】
+2016-05-03 13:34:38,483 INFO  autogen.DbConn - 类型名称【BOOL                】SqlType【-7   】最大精度【1         】
+2016-05-03 13:34:38,483 INFO  autogen.DbConn - 类型名称【TINYINT             】SqlType【-6   】最大精度【3         】
+2016-05-03 13:34:38,483 INFO  autogen.DbConn - 类型名称【TINYINT UNSIGNED    】SqlType【-6   】最大精度【3         】
+2016-05-03 13:34:38,484 INFO  autogen.DbConn - 类型名称【BIGINT              】SqlType【-5   】最大精度【19        】
+2016-05-03 13:34:38,484 INFO  autogen.DbConn - 类型名称【BIGINT UNSIGNED     】SqlType【-5   】最大精度【20        】
+2016-05-03 13:34:38,484 INFO  autogen.DbConn - 类型名称【LONG VARBINARY      】SqlType【-4   】最大精度【16777215  】
+2016-05-03 13:34:38,484 INFO  autogen.DbConn - 类型名称【MEDIUMBLOB          】SqlType【-4   】最大精度【16777215  】
+2016-05-03 13:34:38,484 INFO  autogen.DbConn - 类型名称【LONGBLOB            】SqlType【-4   】最大精度【2147483647】
+2016-05-03 13:34:38,485 INFO  autogen.DbConn - 类型名称【BLOB                】SqlType【-4   】最大精度【65535     】
+2016-05-03 13:34:38,485 INFO  autogen.DbConn - 类型名称【TINYBLOB            】SqlType【-4   】最大精度【255       】
+2016-05-03 13:34:38,485 INFO  autogen.DbConn - 类型名称【VARBINARY           】SqlType【-3   】最大精度【65535     】
+2016-05-03 13:34:38,485 INFO  autogen.DbConn - 类型名称【BINARY              】SqlType【-2   】最大精度【255       】
+2016-05-03 13:34:38,485 INFO  autogen.DbConn - 类型名称【LONG VARCHAR        】SqlType【-1   】最大精度【16777215  】
+2016-05-03 13:34:38,485 INFO  autogen.DbConn - 类型名称【MEDIUMTEXT          】SqlType【-1   】最大精度【16777215  】
+2016-05-03 13:34:38,486 INFO  autogen.DbConn - 类型名称【LONGTEXT            】SqlType【-1   】最大精度【2147483647】
+2016-05-03 13:34:38,486 INFO  autogen.DbConn - 类型名称【TEXT                】SqlType【-1   】最大精度【65535     】
+2016-05-03 13:34:38,486 INFO  autogen.DbConn - 类型名称【TINYTEXT            】SqlType【-1   】最大精度【255       】
+2016-05-03 13:34:38,486 INFO  autogen.DbConn - 类型名称【CHAR                】SqlType【1    】最大精度【255       】
+2016-05-03 13:34:38,486 INFO  autogen.DbConn - 类型名称【NUMERIC             】SqlType【2    】最大精度【65        】
+2016-05-03 13:34:38,487 INFO  autogen.DbConn - 类型名称【DECIMAL             】SqlType【3    】最大精度【65        】
+2016-05-03 13:34:38,487 INFO  autogen.DbConn - 类型名称【INTEGER             】SqlType【4    】最大精度【10        】
+2016-05-03 13:34:38,487 INFO  autogen.DbConn - 类型名称【INTEGER UNSIGNED    】SqlType【4    】最大精度【10        】
+2016-05-03 13:34:38,487 INFO  autogen.DbConn - 类型名称【INT                 】SqlType【4    】最大精度【10        】
+2016-05-03 13:34:38,488 INFO  autogen.DbConn - 类型名称【INT UNSIGNED        】SqlType【4    】最大精度【10        】
+2016-05-03 13:34:38,488 INFO  autogen.DbConn - 类型名称【MEDIUMINT           】SqlType【4    】最大精度【7         】
+2016-05-03 13:34:38,488 INFO  autogen.DbConn - 类型名称【MEDIUMINT UNSIGNED  】SqlType【4    】最大精度【8         】
+2016-05-03 13:34:38,488 INFO  autogen.DbConn - 类型名称【SMALLINT            】SqlType【5    】最大精度【5         】
+2016-05-03 13:34:38,488 INFO  autogen.DbConn - 类型名称【SMALLINT UNSIGNED   】SqlType【5    】最大精度【5         】
+2016-05-03 13:34:38,489 INFO  autogen.DbConn - 类型名称【FLOAT               】SqlType【7    】最大精度【10        】
+2016-05-03 13:34:38,489 INFO  autogen.DbConn - 类型名称【DOUBLE              】SqlType【8    】最大精度【17        】
+2016-05-03 13:34:38,489 INFO  autogen.DbConn - 类型名称【DOUBLE PRECISION    】SqlType【8    】最大精度【17        】
+2016-05-03 13:34:38,489 INFO  autogen.DbConn - 类型名称【REAL                】SqlType【8    】最大精度【17        】
+2016-05-03 13:34:38,489 INFO  autogen.DbConn - 类型名称【VARCHAR             】SqlType【12   】最大精度【65535     】
+2016-05-03 13:34:38,490 INFO  autogen.DbConn - 类型名称【ENUM                】SqlType【12   】最大精度【65535     】
+2016-05-03 13:34:38,490 INFO  autogen.DbConn - 类型名称【SET                 】SqlType【12   】最大精度【64        】
+2016-05-03 13:34:38,490 INFO  autogen.DbConn - 类型名称【DATE                】SqlType【91   】最大精度【0         】
+2016-05-03 13:34:38,490 INFO  autogen.DbConn - 类型名称【TIME                】SqlType【92   】最大精度【0         】
+2016-05-03 13:34:38,490 INFO  autogen.DbConn - 类型名称【DATETIME            】SqlType【93   】最大精度【0         】
+2016-05-03 13:34:38,491 INFO  autogen.DbConn - 类型名称【TIMESTAMP           】SqlType【93   】最大精度【0         】
+2016-05-03 13:34:38,491 INFO  autogen.DbConn - 数据库类型【MySQL】数据库版本【5.5.43-log】数据库驱动名称【MySQL Connector Java】数据库驱动程序版本【mysql-connector-java-5.1.38 ( Revision: fe541c166cec739c74cc727c5da96c1028b4834a )】
+2016-05-03 13:34:38,536 INFO  autogen.AllTableInf - ============================获取所有表结构信息：
+2016-05-03 13:34:38,537 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【act_scores               】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,537 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【act_scores_last          】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,537 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【app_start_pic            】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,537 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_activity          】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,537 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_activity_cur      】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,538 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_device_bno        】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,538 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_diary             】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,538 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_patient           】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,538 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_patient_mng       】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,538 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_patient_mng_invite】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,539 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_patient_mng_invite】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,539 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_qa                】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,539 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_qa_choices        】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,539 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_wiki              】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,539 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_wiki_comment      】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,540 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_wiki_template     】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,540 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_wiki_user_reading_】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,540 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【asthma_wiki_zan          】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,540 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【consult                  】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,541 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【consult_category         】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,541 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【consult_comment          】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,541 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【consult_comment_pic      】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,541 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【consult_comment_zan      】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,542 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【consult_fav              】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,542 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【consult_list_user_last_vi】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,542 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【consult_pic              】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,542 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【consult_user_last_view   】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,543 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【consult_zan              】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,543 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【doctor_send_msg          】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,543 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【doctor_worktime          】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,543 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【invitation_code          】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,543 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【new_msg_consult_reply    】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,544 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【new_msg_upload_reply     】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,544 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【notify_mng_log           】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,544 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【org_doctor_user          】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,544 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【org_info                 】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,545 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【org_optional_province    】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,545 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【patient_binding_device   】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,545 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【patients_org             】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,545 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【patients_org_apply       】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,546 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【pro_submited_base_flag   】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,546 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【question_msg             】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,547 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【question_reply_msg       】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,547 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_do_mission_next_notif】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,548 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission              】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,548 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_date         】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,549 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_date_item    】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,549 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_item_act_scor】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,549 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_item_feel    】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,550 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_item_invite  】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,550 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_item_medicine】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,550 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_item_pef     】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,550 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_item_push_qa 】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,550 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_item_push_vid】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,550 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_item_push_wik】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,551 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_item_video_up】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,551 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_mission_type_times   】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,551 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_patient_control_stars】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,551 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sch_rule                 】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,552 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sld_record               】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,552 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sld_record_sync_log      】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,552 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【sld_sync_first_last      】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,552 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【system_video_lession     】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,552 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【tmp_table                】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,553 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【user_advice              】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,553 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【user_pef                 】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,553 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【user_video_upload        】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,553 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【user_video_upload_comment】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,554 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【user_video_watched       】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,554 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【whq_record               】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,554 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【whq_record_sync_log      】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,554 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【whq_sync_first_last      】表类型【TABLE     】表注释【                              】
+2016-05-03 13:34:38,555 INFO  autogen.AllTableInf - ============================获取所有表主键信息：
+2016-05-03 13:34:38,588 INFO  autogen.AllTableInf - Schema名【core_asthm】表名【org_optional_province    】主键列名【province_i】主键列序号【1 】主键名称【PRIMARY        】
+2016-05-03 13:34:38,602 INFO  autogen.Gen - 共有1个表需要生成数据访问层.
+2016-05-03 13:34:38,602 INFO  autogen.Gen - 第1个表[org_optional_province]sqlMap正在生成中...
+2016-05-03 13:34:38,602 INFO  autogen.AllTableInf - 开始生成表对象，表名：org_optional_province
+2016-05-03 13:34:38,675 INFO  autogen.AllTableInf - 表名【org_optional_province    】列名【province_id    】列sqltype【4  】列typename【INT UNSIGN】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【省id，查省列表（utils中）】列defaultValue【     】列isAutocrement【NO   】
+2016-05-03 13:34:38,680 INFO  autogen.AllTableInf - 表名【org_optional_province    】列名【province_name  】列sqltype【12 】列typename【VARCHAR   】列precision【50   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【省名，查省列表（utils中）】列defaultValue【     】列isAutocrement【NO   】
+2016-05-03 13:34:38,681 INFO  autogen.AllTableInf - 表名【org_optional_province    】列名【app_status     】列sqltype【-7 】列typename【BIT       】列precision【0    】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【是否显示在app中】列defaultValue【1    】列isAutocrement【NO   】
+2016-05-03 13:34:38,682 INFO  autogen.AllTableInf - 生成表对象成功，表名：org_optional_province
+2016-05-03 13:34:38,808 INFO  util.VelocityTemplate - 初始化Velocity成功，配置路径为：/Users/ddr/git/test-projects/cloud-ibator/target/classes/velocity.properties
+2016-05-03 13:34:38,842 INFO  autogen.Gen - OrgOptionalProvince.java
+2016-05-03 13:34:38,878 INFO  autogen.Gen - 实际生成1个表的sqlMap！
+2016-05-03 13:34:38,881 INFO  autogen.Gen - 结束执行DAO代码生成===========================

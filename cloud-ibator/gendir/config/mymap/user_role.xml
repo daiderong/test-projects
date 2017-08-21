@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="UserRole">
+
+	<sql id="tableName" >
+		user_role
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	user_role_id userRoleId ,
+	user_id userId ,
+	role_id roleId     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+  	
+  	<!-- 添加 -->
+	<insert id="create" parameterType="com.ichrono.admin.model.UserRole" useGeneratedKeys="true"  keyProperty="userRoleId">
+		INSERT INTO <include refid="tableName"/> 
+		(user_role_id,user_id,role_id)
+		VALUES
+		(#{userRoleId} ,#{userId} ,#{roleId} )
+	</insert>
+	
+	<!-- 批量 添加 -->
+	<insert id="create_BATCH"  parameterType="List" >
+		INSERT INTO <include refid="tableName"/> 
+		(user_role_id,user_id,role_id)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.userRoleId} ,#{item.userId} ,#{item.roleId} )
+		</foreach>
+	</insert>
+	
+	<delete id="deleteById" parameterType="Long">
+		DELETE FROM 
+		<include refid="tableName"/> 
+		WHERE user_role_id = #{userRoleId}
+  	</delete>
+	
+	<select id="loadAll" resultType="com.ichrono.admin.model.UserRole">
+		<include refid="selectColumns" />
+	</select>
+	
+	<select id="findById" resultType="com.ichrono.admin.model.UserRole" 
+	parameterType="Long">
+		<include refid="selectColumns"/>   
+		WHERE user_role_id = #{userRoleId}
+	</select>
+	
+	<sql id="pageConditions">
+	<where>
+			  	<if test="userRoleId != null">AND user_role_id = #{userRoleId}</if>
+				  	<if test="userId != null">AND user_id = #{userId}</if>
+				  	<if test="roleId != null">AND role_id = #{roleId}</if>
+			</where>
+	</sql>
+	
+	<!-- 分页查询 -->
+	<select id="findPage" resultType="com.ichrono.admin.model.UserRole"
+		parameterType="com.ichrono.admin.model.UserRole">
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<if test="orderStr != '' and orderStr != null">
+				ORDER BY ${orderStr}
+		</if>
+	</select>
+	
+	<select id="findPage_COUNT" resultType="int" parameterType="com.ichrono.admin.model.UserRole"> 
+		select count(1) from
+		<include refid="tableName" />
+		<include refid="pageConditions" />
+	</select>
+	
+	<sql id="update_sql">
+		UPDATE 
+		<include refid="tableName"/> 
+		<set>
+		  		<if test="userId != null">user_id = #{userId} ,</if>
+		  		<if test="roleId != null">role_id = #{roleId} ,</if>
+			</set>
+		WHERE user_role_id = #{userRoleId}
+	</sql>
+		
+	<update id="update" parameterType="com.ichrono.admin.model.UserRole">
+		<include refid="update_sql"/>
+	</update>	
+		
+	
+
+</mapper>

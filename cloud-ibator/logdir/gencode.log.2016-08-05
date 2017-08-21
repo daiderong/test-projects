@@ -1,0 +1,77 @@
+2016-08-05 11:32:10,792 INFO  autogen.Gen - 开始执行DAO代码生成===========================
+2016-08-05 11:32:10,796 INFO  autogen.Settings - 开始初始化数据库环境,路径为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/】
+2016-08-05 11:32:10,803 INFO  autogen.Settings - 找到DB属性配置文件,文件名为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】
+2016-08-05 11:32:10,808 WARN  autogen.Settings - 模版路径：config/
+2016-08-05 11:32:10,809 WARN  autogen.Settings - 代码生成输出路径：/Users/ddr/git/test-projects/cloud-ibator/gendir/
+2016-08-05 11:32:10,809 INFO  autogen.Settings - 代码生成环境配置信息如下：
+2016-08-05 11:32:10,810 INFO  autogen.Settings - DB_USER=root
+2016-08-05 11:32:10,810 INFO  autogen.Settings - JAVA_PACKAGE=com.wondersgroup.yfybx.userauth.model
+2016-08-05 11:32:10,810 INFO  autogen.Settings - DB_NAME=core_auth
+2016-08-05 11:32:10,810 INFO  autogen.Settings - DB_PWD=123456
+2016-08-05 11:32:10,810 INFO  autogen.Settings - DB_TYPE=Mysql
+2016-08-05 11:32:10,811 INFO  autogen.Settings - DB_SERVER=172.16.21.21
+2016-08-05 11:32:10,811 INFO  autogen.Settings - 结束初始化数据库代码生成环境【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】！
+2016-08-05 11:32:10,813 INFO  autogen.DbConn - 初始化数据库[core_auth]连接！
+2016-08-05 11:32:11,128 INFO  autogen.DbConn - 初始化数据库[core_auth]连接【OK】！
+2016-08-05 11:32:11,137 INFO  autogen.DbConn - ===============================数据库支持的数据类型:
+2016-08-05 11:32:11,139 INFO  autogen.DbConn - 类型名称【BIT                 】SqlType【-7   】最大精度【1         】
+2016-08-05 11:32:11,139 INFO  autogen.DbConn - 类型名称【BOOL                】SqlType【-7   】最大精度【1         】
+2016-08-05 11:32:11,139 INFO  autogen.DbConn - 类型名称【TINYINT             】SqlType【-6   】最大精度【3         】
+2016-08-05 11:32:11,139 INFO  autogen.DbConn - 类型名称【TINYINT UNSIGNED    】SqlType【-6   】最大精度【3         】
+2016-08-05 11:32:11,139 INFO  autogen.DbConn - 类型名称【BIGINT              】SqlType【-5   】最大精度【19        】
+2016-08-05 11:32:11,140 INFO  autogen.DbConn - 类型名称【BIGINT UNSIGNED     】SqlType【-5   】最大精度【20        】
+2016-08-05 11:32:11,140 INFO  autogen.DbConn - 类型名称【LONG VARBINARY      】SqlType【-4   】最大精度【16777215  】
+2016-08-05 11:32:11,140 INFO  autogen.DbConn - 类型名称【MEDIUMBLOB          】SqlType【-4   】最大精度【16777215  】
+2016-08-05 11:32:11,140 INFO  autogen.DbConn - 类型名称【LONGBLOB            】SqlType【-4   】最大精度【2147483647】
+2016-08-05 11:32:11,140 INFO  autogen.DbConn - 类型名称【BLOB                】SqlType【-4   】最大精度【65535     】
+2016-08-05 11:32:11,141 INFO  autogen.DbConn - 类型名称【TINYBLOB            】SqlType【-4   】最大精度【255       】
+2016-08-05 11:32:11,141 INFO  autogen.DbConn - 类型名称【VARBINARY           】SqlType【-3   】最大精度【65535     】
+2016-08-05 11:32:11,141 INFO  autogen.DbConn - 类型名称【BINARY              】SqlType【-2   】最大精度【255       】
+2016-08-05 11:32:11,141 INFO  autogen.DbConn - 类型名称【LONG VARCHAR        】SqlType【-1   】最大精度【16777215  】
+2016-08-05 11:32:11,141 INFO  autogen.DbConn - 类型名称【MEDIUMTEXT          】SqlType【-1   】最大精度【16777215  】
+2016-08-05 11:32:11,142 INFO  autogen.DbConn - 类型名称【LONGTEXT            】SqlType【-1   】最大精度【2147483647】
+2016-08-05 11:32:11,142 INFO  autogen.DbConn - 类型名称【TEXT                】SqlType【-1   】最大精度【65535     】
+2016-08-05 11:32:11,142 INFO  autogen.DbConn - 类型名称【TINYTEXT            】SqlType【-1   】最大精度【255       】
+2016-08-05 11:32:11,142 INFO  autogen.DbConn - 类型名称【CHAR                】SqlType【1    】最大精度【255       】
+2016-08-05 11:32:11,143 INFO  autogen.DbConn - 类型名称【NUMERIC             】SqlType【2    】最大精度【65        】
+2016-08-05 11:32:11,143 INFO  autogen.DbConn - 类型名称【DECIMAL             】SqlType【3    】最大精度【65        】
+2016-08-05 11:32:11,143 INFO  autogen.DbConn - 类型名称【INTEGER             】SqlType【4    】最大精度【10        】
+2016-08-05 11:32:11,143 INFO  autogen.DbConn - 类型名称【INTEGER UNSIGNED    】SqlType【4    】最大精度【10        】
+2016-08-05 11:32:11,144 INFO  autogen.DbConn - 类型名称【INT                 】SqlType【4    】最大精度【10        】
+2016-08-05 11:32:11,144 INFO  autogen.DbConn - 类型名称【INT UNSIGNED        】SqlType【4    】最大精度【10        】
+2016-08-05 11:32:11,144 INFO  autogen.DbConn - 类型名称【MEDIUMINT           】SqlType【4    】最大精度【7         】
+2016-08-05 11:32:11,144 INFO  autogen.DbConn - 类型名称【MEDIUMINT UNSIGNED  】SqlType【4    】最大精度【8         】
+2016-08-05 11:32:11,144 INFO  autogen.DbConn - 类型名称【SMALLINT            】SqlType【5    】最大精度【5         】
+2016-08-05 11:32:11,145 INFO  autogen.DbConn - 类型名称【SMALLINT UNSIGNED   】SqlType【5    】最大精度【5         】
+2016-08-05 11:32:11,145 INFO  autogen.DbConn - 类型名称【FLOAT               】SqlType【7    】最大精度【10        】
+2016-08-05 11:32:11,145 INFO  autogen.DbConn - 类型名称【DOUBLE              】SqlType【8    】最大精度【17        】
+2016-08-05 11:32:11,145 INFO  autogen.DbConn - 类型名称【DOUBLE PRECISION    】SqlType【8    】最大精度【17        】
+2016-08-05 11:32:11,145 INFO  autogen.DbConn - 类型名称【REAL                】SqlType【8    】最大精度【17        】
+2016-08-05 11:32:11,146 INFO  autogen.DbConn - 类型名称【VARCHAR             】SqlType【12   】最大精度【65535     】
+2016-08-05 11:32:11,146 INFO  autogen.DbConn - 类型名称【ENUM                】SqlType【12   】最大精度【65535     】
+2016-08-05 11:32:11,146 INFO  autogen.DbConn - 类型名称【SET                 】SqlType【12   】最大精度【64        】
+2016-08-05 11:32:11,146 INFO  autogen.DbConn - 类型名称【DATE                】SqlType【91   】最大精度【0         】
+2016-08-05 11:32:11,147 INFO  autogen.DbConn - 类型名称【TIME                】SqlType【92   】最大精度【0         】
+2016-08-05 11:32:11,147 INFO  autogen.DbConn - 类型名称【DATETIME            】SqlType【93   】最大精度【0         】
+2016-08-05 11:32:11,147 INFO  autogen.DbConn - 类型名称【TIMESTAMP           】SqlType【93   】最大精度【0         】
+2016-08-05 11:32:11,147 INFO  autogen.DbConn - 数据库类型【MySQL】数据库版本【5.5.43-log】数据库驱动名称【MySQL Connector Java】数据库驱动程序版本【mysql-connector-java-5.1.38 ( Revision: fe541c166cec739c74cc727c5da96c1028b4834a )】
+2016-08-05 11:32:11,156 INFO  autogen.AllTableInf - ============================获取所有表结构信息：
+2016-08-05 11:32:11,156 INFO  autogen.AllTableInf - Schema名【core_auth 】表名【auth_parther             】表类型【TABLE     】表注释【                              】
+2016-08-05 11:32:11,156 INFO  autogen.AllTableInf - Schema名【core_auth 】表名【user_account             】表类型【TABLE     】表注释【                              】
+2016-08-05 11:32:11,156 INFO  autogen.AllTableInf - Schema名【core_auth 】表名【user_login_last          】表类型【TABLE     】表注释【                              】
+2016-08-05 11:32:11,157 INFO  autogen.AllTableInf - Schema名【core_auth 】表名【user_login_log           】表类型【TABLE     】表注释【                              】
+2016-08-05 11:32:11,157 INFO  autogen.AllTableInf - ============================获取所有表主键信息：
+2016-08-05 11:32:11,162 INFO  autogen.AllTableInf - Schema名【core_auth 】表名【auth_parther             】主键列名【partner_id】主键列序号【1 】主键名称【PRIMARY        】
+2016-08-05 11:32:11,178 INFO  autogen.Gen - 共有1个表需要生成数据访问层.
+2016-08-05 11:32:11,179 INFO  autogen.Gen - 第1个表[auth_parther]sqlMap正在生成中...
+2016-08-05 11:32:11,179 INFO  autogen.AllTableInf - 开始生成表对象，表名：auth_parther
+2016-08-05 11:32:11,195 INFO  autogen.AllTableInf - 表名【auth_parther             】列名【partner_id     】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【合作者ID         】列defaultValue【     】列isAutocrement【NO   】
+2016-08-05 11:32:11,198 INFO  autogen.AllTableInf - 表名【auth_parther             】列名【parther_key    】列sqltype【12 】列typename【VARCHAR   】列precision【1000 】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【分配给合作者的key】列defaultValue【     】列isAutocrement【NO   】
+2016-08-05 11:32:11,199 INFO  autogen.AllTableInf - 表名【auth_parther             】列名【parther_name   】列sqltype【12 】列typename【VARCHAR   】列precision【80   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【合作者名称     】列defaultValue【     】列isAutocrement【NO   】
+2016-08-05 11:32:11,199 INFO  autogen.AllTableInf - 表名【auth_parther             】列名【authed_status  】列sqltype【-7 】列typename【BIT       】列precision【1    】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【1为有效0为无效】列defaultValue【     】列isAutocrement【NO   】
+2016-08-05 11:32:11,200 INFO  autogen.AllTableInf - 表名【auth_parther             】列名【created_at     】列sqltype【93 】列typename【DATETIME  】列precision【19   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-05 11:32:11,202 INFO  autogen.AllTableInf - 生成表对象成功，表名：auth_parther
+2016-08-05 11:32:11,340 INFO  util.VelocityTemplate - 初始化Velocity成功，配置路径为：/Users/ddr/git/test-projects/cloud-ibator/target/classes/velocity.properties
+2016-08-05 11:32:11,378 INFO  autogen.Gen - AuthParther.java
+2016-08-05 11:32:11,416 INFO  autogen.Gen - 实际生成1个表的sqlMap！
+2016-08-05 11:32:11,417 INFO  autogen.Gen - 结束执行DAO代码生成===========================

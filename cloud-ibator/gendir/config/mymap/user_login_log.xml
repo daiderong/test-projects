@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="UserLoginLog">
+
+	<sql id="tableName" >
+		user_login_log
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	uuid uuid ,
+	account account ,
+	user_id userId ,
+	token token ,
+	from_tag fromTag ,
+	login_ip loginIp ,
+	created_at createdAt ,
+	app_id appId ,
+	client_info clientInfo ,
+	signature signature     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+  	
+  	<!-- 添加 -->
+	<insert id="create" parameterType="com.wondersgroup.yfybx.userauth.model.UserLoginLog" useGeneratedKeys="true"  keyProperty="uuid">
+		INSERT INTO <include refid="tableName"/> 
+		(uuid,account,user_id,token,from_tag,login_ip,created_at,app_id,client_info,signature)
+		VALUES
+		(#{uuid} ,#{account} ,#{userId} ,#{token} ,#{fromTag} ,#{loginIp} ,#{createdAt} ,#{appId} ,#{clientInfo} ,#{signature} )
+	</insert>
+	
+	<!-- 批量 添加 -->
+	<insert id="create_BATCH"  parameterType="List" >
+		INSERT INTO <include refid="tableName"/> 
+		(uuid,account,user_id,token,from_tag,login_ip,created_at,app_id,client_info,signature)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.uuid} ,#{item.account} ,#{item.userId} ,#{item.token} ,#{item.fromTag} ,#{item.loginIp} ,#{item.createdAt} ,#{item.appId} ,#{item.clientInfo} ,#{item.signature} )
+		</foreach>
+	</insert>
+	
+	<delete id="deleteById" parameterType="Long">
+		DELETE FROM 
+		<include refid="tableName"/> 
+		WHERE uuid = #{uuid}
+  	</delete>
+	
+	<select id="loadAll" resultType="com.wondersgroup.yfybx.userauth.model.UserLoginLog">
+		<include refid="selectColumns" />
+	</select>
+	
+	<select id="findById" resultType="com.wondersgroup.yfybx.userauth.model.UserLoginLog" 
+	parameterType="Long">
+		<include refid="selectColumns"/>   
+		WHERE uuid = #{uuid}
+	</select>
+	
+	<sql id="pageConditions">
+	<where>
+			  	<if test="uuid != null">AND uuid = #{uuid}</if>
+				  	<if test="account != '' and account != null">AND account = #{account}</if>
+				  	<if test="userId != null">AND user_id = #{userId}</if>
+				  	<if test="token != '' and token != null">AND token = #{token}</if>
+				  	<if test="fromTag != '' and fromTag != null">AND from_tag = #{fromTag}</if>
+				  	<if test="loginIp != '' and loginIp != null">AND login_ip = #{loginIp}</if>
+				  	<if test="createdAt != null">AND created_at = #{createdAt}</if>
+				  	<if test="appId != '' and appId != null">AND app_id = #{appId}</if>
+				  	<if test="clientInfo != '' and clientInfo != null">AND client_info = #{clientInfo}</if>
+				  	<if test="signature != '' and signature != null">AND signature = #{signature}</if>
+			</where>
+	</sql>
+	
+	<!-- 分页查询 -->
+	<select id="findPage" resultType="com.wondersgroup.yfybx.userauth.model.UserLoginLog"
+		parameterType="com.wondersgroup.yfybx.userauth.model.UserLoginLog">
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<if test="orderStr != '' and orderStr != null">
+				ORDER BY ${orderStr}
+		</if>
+	</select>
+	
+	<select id="findPage_COUNT" resultType="int" parameterType="com.wondersgroup.yfybx.userauth.model.UserLoginLog"> 
+		select count(1) from
+		<include refid="tableName" />
+		<include refid="pageConditions" />
+	</select>
+	
+	<sql id="update_sql">
+		UPDATE 
+		<include refid="tableName"/> 
+		<set>
+		  		<if test="account != null">account = #{account} ,</if>
+		  		<if test="userId != null">user_id = #{userId} ,</if>
+		  		<if test="token != null">token = #{token} ,</if>
+		  		<if test="fromTag != null">from_tag = #{fromTag} ,</if>
+		  		<if test="loginIp != null">login_ip = #{loginIp} ,</if>
+		  		<if test="createdAt != null">created_at = #{createdAt} ,</if>
+		  		<if test="appId != null">app_id = #{appId} ,</if>
+		  		<if test="clientInfo != null">client_info = #{clientInfo} ,</if>
+		  		<if test="signature != null">signature = #{signature} ,</if>
+			</set>
+		WHERE uuid = #{uuid}
+	</sql>
+		
+	<update id="update" parameterType="com.wondersgroup.yfybx.userauth.model.UserLoginLog">
+		<include refid="update_sql"/>
+	</update>	
+		
+	
+
+</mapper>

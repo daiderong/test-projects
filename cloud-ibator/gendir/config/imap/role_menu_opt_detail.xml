@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="RoleMenuOptDetail">
+
+	<typeAlias alias="RoleMenuOptDetail" type="com.ichrono.admin.model.RoleMenuOptDetail" />
+	
+	<sql id="tableName" >
+		role_menu_opt_detail
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	role_menu_opt_id roleMenuOptId ,
+	role_id roleId ,
+	menu_id menuId ,
+	data_query dataQuery ,
+	data_add dataAdd ,
+	data_update dataUpdate ,
+	data_delete dataDelete ,
+	data_export dataExport     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+	
+	<insert id="create" parameterClass="RoleMenuOptDetail">
+		INSERT INTO <include refid="tableName"/> (		role_menu_opt_id,		role_id,		menu_id,		data_query,		data_add,		data_update,		data_delete,		data_export)
+		VALUES(#roleMenuOptId# ,#roleId# ,#menuId# ,#dataQuery# ,#dataAdd# ,#dataUpdate# ,#dataDelete# ,#dataExport# )
+		<selectKey resultClass="long" keyProperty="role_menu_opt_id">
+           SELECT last_insert_id() AS roleMenuOptId
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterClass="Long">
+		DELETE FROM <include refid="tableName"/> 
+		WHERE role_menu_opt_id = #roleMenuOptId#
+  	</delete>
+	
+	<select id="loadAll" resultClass="RoleMenuOptDetail">
+		<include refid="selectColumns"/> 
+	</select>
+	
+	<select id="findById" resultClass="RoleMenuOptDetail" parameterClass="Long">
+		<include refid="selectColumns"/>   
+		where role_menu_opt_id = #roleMenuOptId#
+	</select>
+	
+	
+	<sql id="pageConditions">
+		WHERE 1=1
+		<dynamic>
+			<isNotEmpty property="roleMenuOptId" prepend=" AND ">
+				role_menu_opt_id=#roleMenuOptId#
+		  	</isNotEmpty>
+			<isNotEmpty property="roleId" prepend=" AND ">
+				role_id=#roleId#
+		  	</isNotEmpty>
+			<isNotEmpty property="menuId" prepend=" AND ">
+				menu_id=#menuId#
+		  	</isNotEmpty>
+			<isNotEmpty property="dataQuery" prepend=" AND ">
+				data_query=#dataQuery#
+		  	</isNotEmpty>
+			<isNotEmpty property="dataAdd" prepend=" AND ">
+				data_add=#dataAdd#
+		  	</isNotEmpty>
+			<isNotEmpty property="dataUpdate" prepend=" AND ">
+				data_update=#dataUpdate#
+		  	</isNotEmpty>
+			<isNotEmpty property="dataDelete" prepend=" AND ">
+				data_delete=#dataDelete#
+		  	</isNotEmpty>
+			<isNotEmpty property="dataExport" prepend=" AND ">
+				data_export=#dataExport#
+		  	</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	
+	<select id="findPage" resultClass="RoleMenuOptDetail" parameterClass="RoleMenuOptDetail" >
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<isNotEmpty prepend="ORDER BY" property="orderStr" >
+			$orderStr$
+		</isNotEmpty>
+		
+	</select>
+	<select id="findPage_COUNT" resultClass="int" parameterClass="com.ichrono.admin.model.RoleMenuOptDetail">
+		select count(1) from <include refid="tableName"/> 
+		<include refid="pageConditions"/>
+	</select>
+	
+	
+	<update id="update" parameterClass="RoleMenuOptDetail">
+		UPDATE <include refid="tableName"/> 
+		<dynamic prepend="set" >
+		<isNotNull prepend="," property="roleId">
+			role_id = #roleId#
+      	</isNotNull>
+		<isNotNull prepend="," property="menuId">
+			menu_id = #menuId#
+      	</isNotNull>
+		<isNotNull prepend="," property="dataQuery">
+			data_query = #dataQuery#
+      	</isNotNull>
+		<isNotNull prepend="," property="dataAdd">
+			data_add = #dataAdd#
+      	</isNotNull>
+		<isNotNull prepend="," property="dataUpdate">
+			data_update = #dataUpdate#
+      	</isNotNull>
+		<isNotNull prepend="," property="dataDelete">
+			data_delete = #dataDelete#
+      	</isNotNull>
+		<isNotNull prepend="," property="dataExport">
+			data_export = #dataExport#
+      	</isNotNull>
+		</dynamic>
+		WHERE role_menu_opt_id = #roleMenuOptId#
+	</update>
+	
+	
+
+</sqlMap>

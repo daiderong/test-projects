@@ -1,0 +1,28 @@
+package com.mytest.webservice.tl.md;
+
+public class BaseInfoDTO {
+
+	
+//	 	<INSUREDID>00993494</INSUREDID>
+//	    <MEDCARDNO>00993494</MEDCARDNO>
+//	    <INSURETYPE>1</INSURETYPE>
+//	    <NAME>王金花</NAME>
+//	    <IDENTITYNO>330122196210201124</IDENTITYNO>
+//	    <SEX>2</SEX>
+//	    <BIRTHDAY>1962-10-20</BIRTHDAY>
+//	    <COMPCODE/>
+//	    <TELEPHONE>18042038610</TELEPHONE>
+//	    <ADDRESS/>
+//	    <BANKNAME/>
+//	    <BANKUSERNAME/>
+//	    <BANKACCOUNT/>
+//	    <LTCSTATE>2</LTCSTATE>
+//	    <EFFDATE>2017-01-01</EFFDATE>
+//	    <EXPDATE>2017-12-31</EXPDATE>
+//	    <OTHSTATE>5</OTHSTATE>
+//	    <OTHEFFDATE/>
+//	    <OTHEXPDATE/>
+//	    <OPTFLAG>1</OPTFLAG>
+//	    <OPTTIME>2017-05-15 23:00:26</OPTTIME>
+	
+}

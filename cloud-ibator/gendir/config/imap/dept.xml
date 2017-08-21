@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Dept">
+
+	<typeAlias alias="Dept" type="com.ichrono.admin.model.Dept" />
+	
+	<sql id="tableName" >
+		dept
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	dept_id deptId ,
+	name name ,
+	parent_id parentId ,
+	position position ,
+	create_time createTime     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+	
+	<insert id="create" parameterClass="Dept">
+		INSERT INTO <include refid="tableName"/> (		dept_id,		name,		parent_id,		position,		create_time)
+		VALUES(#deptId# ,#name# ,#parentId# ,#position# ,#createTime# )
+		<selectKey resultClass="long" keyProperty="dept_id">
+           SELECT last_insert_id() AS deptId
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterClass="Long">
+		DELETE FROM <include refid="tableName"/> 
+		WHERE dept_id = #deptId#
+  	</delete>
+	
+	<select id="loadAll" resultClass="Dept">
+		<include refid="selectColumns"/> 
+	</select>
+	
+	<select id="findById" resultClass="Dept" parameterClass="Long">
+		<include refid="selectColumns"/>   
+		where dept_id = #deptId#
+	</select>
+	
+	
+	<sql id="pageConditions">
+		WHERE 1=1
+		<dynamic>
+			<isNotEmpty property="deptId" prepend=" AND ">
+				dept_id=#deptId#
+		  	</isNotEmpty>
+			<isNotEmpty property="name" prepend=" AND ">
+				name=#name#
+		  	</isNotEmpty>
+			<isNotEmpty property="parentId" prepend=" AND ">
+				parent_id=#parentId#
+		  	</isNotEmpty>
+			<isNotEmpty property="position" prepend=" AND ">
+				position=#position#
+		  	</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	
+	<select id="findPage" resultClass="Dept" parameterClass="Dept" >
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<isNotEmpty prepend="ORDER BY" property="orderStr" >
+			$orderStr$
+		</isNotEmpty>
+		
+	</select>
+	<select id="findPage_COUNT" resultClass="int" parameterClass="com.ichrono.admin.model.Dept">
+		select count(1) from <include refid="tableName"/> 
+		<include refid="pageConditions"/>
+	</select>
+	
+	
+	<update id="update" parameterClass="Dept">
+		UPDATE <include refid="tableName"/> 
+		<dynamic prepend="set" >
+		<isNotNull prepend="," property="name">
+			name = #name#
+      	</isNotNull>
+		<isNotNull prepend="," property="parentId">
+			parent_id = #parentId#
+      	</isNotNull>
+		<isNotNull prepend="," property="position">
+			position = #position#
+      	</isNotNull>
+		<isNotNull prepend="," property="createTime">
+			create_time = #createTime#
+      	</isNotNull>
+		</dynamic>
+		WHERE dept_id = #deptId#
+	</update>
+	
+	
+
+</sqlMap>

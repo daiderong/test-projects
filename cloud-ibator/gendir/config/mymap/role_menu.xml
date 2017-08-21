@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="RoleMenu">
+
+	<sql id="tableName" >
+		role_menu
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+	role_menu_id roleMenuId ,
+	role_id roleId ,
+	menu_id menuId     FROM 
+    <include refid="tableName"/> t
+  	</sql>
+  	
+  	<!-- 添加 -->
+	<insert id="create" parameterType="com.ichrono.admin.model.RoleMenu" useGeneratedKeys="true"  keyProperty="roleMenuId">
+		INSERT INTO <include refid="tableName"/> 
+		(role_menu_id,role_id,menu_id)
+		VALUES
+		(#{roleMenuId} ,#{roleId} ,#{menuId} )
+	</insert>
+	
+	<!-- 批量 添加 -->
+	<insert id="create_BATCH"  parameterType="List" >
+		INSERT INTO <include refid="tableName"/> 
+		(role_menu_id,role_id,menu_id)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.roleMenuId} ,#{item.roleId} ,#{item.menuId} )
+		</foreach>
+	</insert>
+	
+	<delete id="deleteById" parameterType="Long">
+		DELETE FROM 
+		<include refid="tableName"/> 
+		WHERE role_menu_id = #{roleMenuId}
+  	</delete>
+	
+	<select id="loadAll" resultType="com.ichrono.admin.model.RoleMenu">
+		<include refid="selectColumns" />
+	</select>
+	
+	<select id="findById" resultType="com.ichrono.admin.model.RoleMenu" 
+	parameterType="Long">
+		<include refid="selectColumns"/>   
+		WHERE role_menu_id = #{roleMenuId}
+	</select>
+	
+	<sql id="pageConditions">
+	<where>
+			  	<if test="roleMenuId != null">AND role_menu_id = #{roleMenuId}</if>
+				  	<if test="roleId != null">AND role_id = #{roleId}</if>
+				  	<if test="menuId != null">AND menu_id = #{menuId}</if>
+			</where>
+	</sql>
+	
+	<!-- 分页查询 -->
+	<select id="findPage" resultType="com.ichrono.admin.model.RoleMenu"
+		parameterType="com.ichrono.admin.model.RoleMenu">
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<if test="orderStr != '' and orderStr != null">
+				ORDER BY ${orderStr}
+		</if>
+	</select>
+	
+	<select id="findPage_COUNT" resultType="int" parameterType="com.ichrono.admin.model.RoleMenu"> 
+		select count(1) from
+		<include refid="tableName" />
+		<include refid="pageConditions" />
+	</select>
+	
+	<sql id="update_sql">
+		UPDATE 
+		<include refid="tableName"/> 
+		<set>
+		  		<if test="roleId != null">role_id = #{roleId} ,</if>
+		  		<if test="menuId != null">menu_id = #{menuId} ,</if>
+			</set>
+		WHERE role_menu_id = #{roleMenuId}
+	</sql>
+		
+	<update id="update" parameterType="com.ichrono.admin.model.RoleMenu">
+		<include refid="update_sql"/>
+	</update>	
+		
+	
+
+</mapper>

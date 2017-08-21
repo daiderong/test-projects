@@ -1,0 +1,281 @@
+2016-08-06 09:30:58,038 INFO  autogen.Gen - 开始执行DAO代码生成===========================
+2016-08-06 09:30:58,044 INFO  autogen.Settings - 开始初始化数据库环境,路径为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/】
+2016-08-06 09:30:58,049 INFO  autogen.Settings - 找到DB属性配置文件,文件名为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】
+2016-08-06 09:30:58,052 WARN  autogen.Settings - 模版路径：config/
+2016-08-06 09:30:58,053 WARN  autogen.Settings - 代码生成输出路径：/Users/ddr/git/test-projects/cloud-ibator/gendir/
+2016-08-06 09:30:58,053 INFO  autogen.Settings - 代码生成环境配置信息如下：
+2016-08-06 09:30:58,053 INFO  autogen.Settings - DB_USER=root
+2016-08-06 09:30:58,053 INFO  autogen.Settings - JAVA_PACKAGE=com.ichrono.admin.model
+2016-08-06 09:30:58,053 INFO  autogen.Settings - DB_NAME=yfy_user_role
+2016-08-06 09:30:58,053 INFO  autogen.Settings - DB_PWD=123456
+2016-08-06 09:30:58,053 INFO  autogen.Settings - DB_TYPE=Mysql
+2016-08-06 09:30:58,053 INFO  autogen.Settings - DB_SERVER=localhost
+2016-08-06 09:30:58,053 INFO  autogen.Settings - 结束初始化数据库代码生成环境【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】！
+2016-08-06 09:30:58,055 INFO  autogen.DbConn - 初始化数据库[yfy_user_role]连接！
+2016-08-06 09:31:02,912 ERROR autogen.DbConn - 链接数据库出错[jdbc:mysql://localhost:3306/yfy_user_role?autoReconnect=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true, root, 123456]
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.Util.getInstance(Util.java:387)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:917)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2165)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2090)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:795)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:215)
+	at com.ichrono.ibatis.autogen.DbConn.init(DbConn.java:66)
+	at com.ichrono.ibatis.autogen.DbConn.<init>(DbConn.java:48)
+	at com.ichrono.ibatis.autogen.Gen.doGen(Gen.java:70)
+	at com.ichrono.ibatis.autogen.Gen.main(Gen.java:54)
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:871)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1694)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1215)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2255)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2106)
+	... 16 more
+2016-08-06 09:31:02,915 ERROR autogen.Gen - 数据库连接创建失败！
+2016-08-06 09:31:37,993 INFO  autogen.Gen - 开始执行DAO代码生成===========================
+2016-08-06 09:31:37,995 INFO  autogen.Settings - 开始初始化数据库环境,路径为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/】
+2016-08-06 09:31:38,003 INFO  autogen.Settings - 找到DB属性配置文件,文件名为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】
+2016-08-06 09:31:38,011 WARN  autogen.Settings - 模版路径：config/
+2016-08-06 09:31:38,011 WARN  autogen.Settings - 代码生成输出路径：/Users/ddr/git/test-projects/cloud-ibator/gendir/
+2016-08-06 09:31:38,011 INFO  autogen.Settings - 代码生成环境配置信息如下：
+2016-08-06 09:31:38,011 INFO  autogen.Settings - DB_USER=dev
+2016-08-06 09:31:38,011 INFO  autogen.Settings - JAVA_PACKAGE=com.ichrono.admin.model
+2016-08-06 09:31:38,012 INFO  autogen.Settings - DB_NAME=yfy_user_role
+2016-08-06 09:31:38,012 INFO  autogen.Settings - DB_PWD=123456
+2016-08-06 09:31:38,012 INFO  autogen.Settings - DB_TYPE=Mysql
+2016-08-06 09:31:38,012 INFO  autogen.Settings - DB_SERVER=localhost
+2016-08-06 09:31:38,012 INFO  autogen.Settings - 结束初始化数据库代码生成环境【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】！
+2016-08-06 09:31:38,013 INFO  autogen.DbConn - 初始化数据库[yfy_user_role]连接！
+2016-08-06 09:31:38,564 INFO  autogen.DbConn - 初始化数据库[yfy_user_role]连接【OK】！
+2016-08-06 09:31:38,572 INFO  autogen.DbConn - ===============================数据库支持的数据类型:
+2016-08-06 09:31:38,573 INFO  autogen.DbConn - 类型名称【BIT                 】SqlType【-7   】最大精度【1         】
+2016-08-06 09:31:38,574 INFO  autogen.DbConn - 类型名称【BOOL                】SqlType【-7   】最大精度【1         】
+2016-08-06 09:31:38,574 INFO  autogen.DbConn - 类型名称【TINYINT             】SqlType【-6   】最大精度【3         】
+2016-08-06 09:31:38,574 INFO  autogen.DbConn - 类型名称【TINYINT UNSIGNED    】SqlType【-6   】最大精度【3         】
+2016-08-06 09:31:38,574 INFO  autogen.DbConn - 类型名称【BIGINT              】SqlType【-5   】最大精度【19        】
+2016-08-06 09:31:38,574 INFO  autogen.DbConn - 类型名称【BIGINT UNSIGNED     】SqlType【-5   】最大精度【20        】
+2016-08-06 09:31:38,574 INFO  autogen.DbConn - 类型名称【LONG VARBINARY      】SqlType【-4   】最大精度【16777215  】
+2016-08-06 09:31:38,574 INFO  autogen.DbConn - 类型名称【MEDIUMBLOB          】SqlType【-4   】最大精度【16777215  】
+2016-08-06 09:31:38,575 INFO  autogen.DbConn - 类型名称【LONGBLOB            】SqlType【-4   】最大精度【2147483647】
+2016-08-06 09:31:38,575 INFO  autogen.DbConn - 类型名称【BLOB                】SqlType【-4   】最大精度【65535     】
+2016-08-06 09:31:38,575 INFO  autogen.DbConn - 类型名称【TINYBLOB            】SqlType【-4   】最大精度【255       】
+2016-08-06 09:31:38,575 INFO  autogen.DbConn - 类型名称【VARBINARY           】SqlType【-3   】最大精度【65535     】
+2016-08-06 09:31:38,575 INFO  autogen.DbConn - 类型名称【BINARY              】SqlType【-2   】最大精度【255       】
+2016-08-06 09:31:38,576 INFO  autogen.DbConn - 类型名称【LONG VARCHAR        】SqlType【-1   】最大精度【16777215  】
+2016-08-06 09:31:38,576 INFO  autogen.DbConn - 类型名称【MEDIUMTEXT          】SqlType【-1   】最大精度【16777215  】
+2016-08-06 09:31:38,576 INFO  autogen.DbConn - 类型名称【LONGTEXT            】SqlType【-1   】最大精度【2147483647】
+2016-08-06 09:31:38,576 INFO  autogen.DbConn - 类型名称【TEXT                】SqlType【-1   】最大精度【65535     】
+2016-08-06 09:31:38,576 INFO  autogen.DbConn - 类型名称【TINYTEXT            】SqlType【-1   】最大精度【255       】
+2016-08-06 09:31:38,577 INFO  autogen.DbConn - 类型名称【CHAR                】SqlType【1    】最大精度【255       】
+2016-08-06 09:31:38,577 INFO  autogen.DbConn - 类型名称【NUMERIC             】SqlType【2    】最大精度【65        】
+2016-08-06 09:31:38,577 INFO  autogen.DbConn - 类型名称【DECIMAL             】SqlType【3    】最大精度【65        】
+2016-08-06 09:31:38,577 INFO  autogen.DbConn - 类型名称【INTEGER             】SqlType【4    】最大精度【10        】
+2016-08-06 09:31:38,577 INFO  autogen.DbConn - 类型名称【INTEGER UNSIGNED    】SqlType【4    】最大精度【10        】
+2016-08-06 09:31:38,578 INFO  autogen.DbConn - 类型名称【INT                 】SqlType【4    】最大精度【10        】
+2016-08-06 09:31:38,578 INFO  autogen.DbConn - 类型名称【INT UNSIGNED        】SqlType【4    】最大精度【10        】
+2016-08-06 09:31:38,578 INFO  autogen.DbConn - 类型名称【MEDIUMINT           】SqlType【4    】最大精度【7         】
+2016-08-06 09:31:38,578 INFO  autogen.DbConn - 类型名称【MEDIUMINT UNSIGNED  】SqlType【4    】最大精度【8         】
+2016-08-06 09:31:38,578 INFO  autogen.DbConn - 类型名称【SMALLINT            】SqlType【5    】最大精度【5         】
+2016-08-06 09:31:38,579 INFO  autogen.DbConn - 类型名称【SMALLINT UNSIGNED   】SqlType【5    】最大精度【5         】
+2016-08-06 09:31:38,579 INFO  autogen.DbConn - 类型名称【FLOAT               】SqlType【7    】最大精度【10        】
+2016-08-06 09:31:38,579 INFO  autogen.DbConn - 类型名称【DOUBLE              】SqlType【8    】最大精度【17        】
+2016-08-06 09:31:38,579 INFO  autogen.DbConn - 类型名称【DOUBLE PRECISION    】SqlType【8    】最大精度【17        】
+2016-08-06 09:31:38,579 INFO  autogen.DbConn - 类型名称【REAL                】SqlType【8    】最大精度【17        】
+2016-08-06 09:31:38,579 INFO  autogen.DbConn - 类型名称【VARCHAR             】SqlType【12   】最大精度【65535     】
+2016-08-06 09:31:38,579 INFO  autogen.DbConn - 类型名称【ENUM                】SqlType【12   】最大精度【65535     】
+2016-08-06 09:31:38,580 INFO  autogen.DbConn - 类型名称【SET                 】SqlType【12   】最大精度【64        】
+2016-08-06 09:31:38,580 INFO  autogen.DbConn - 类型名称【DATE                】SqlType【91   】最大精度【0         】
+2016-08-06 09:31:38,580 INFO  autogen.DbConn - 类型名称【TIME                】SqlType【92   】最大精度【0         】
+2016-08-06 09:31:38,580 INFO  autogen.DbConn - 类型名称【DATETIME            】SqlType【93   】最大精度【0         】
+2016-08-06 09:31:38,580 INFO  autogen.DbConn - 类型名称【TIMESTAMP           】SqlType【93   】最大精度【0         】
+2016-08-06 09:31:38,580 INFO  autogen.DbConn - 数据库类型【MySQL】数据库版本【5.7.11】数据库驱动名称【MySQL Connector Java】数据库驱动程序版本【mysql-connector-java-5.1.38 ( Revision: fe541c166cec739c74cc727c5da96c1028b4834a )】
+2016-08-06 09:31:38,589 INFO  autogen.AllTableInf - ============================获取所有表结构信息：
+2016-08-06 09:31:38,591 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【dept                     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,591 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【login_user               】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,591 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【menu                     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,592 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role                     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,592 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role_menu                】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,593 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role_menu_opt_detail     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,593 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【user_role                】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,593 ERROR autogen.AllTableInf - 指定的表[auth_parther]不存在，不生成此表！
+2016-08-06 09:31:38,593 INFO  autogen.AllTableInf - ============================获取所有表主键信息：
+2016-08-06 09:31:38,608 INFO  autogen.AllTableInf - ============================获取所有表结构信息：
+2016-08-06 09:31:38,609 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【dept                     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,609 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【login_user               】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,609 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【menu                     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,609 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role                     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,610 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role_menu                】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,610 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role_menu_opt_detail     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,610 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【user_role                】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:38,610 ERROR autogen.AllTableInf - 指定的表[auth_parther]不存在，不生成此表！
+2016-08-06 09:31:38,610 INFO  autogen.Gen - 共有0个表需要生成数据访问层.
+2016-08-06 09:31:38,610 INFO  autogen.Gen - 实际生成0个表的sqlMap！
+2016-08-06 09:31:38,613 INFO  autogen.Gen - 结束执行DAO代码生成===========================
+2016-08-06 09:31:57,058 INFO  autogen.Gen - 开始执行DAO代码生成===========================
+2016-08-06 09:31:57,060 INFO  autogen.Settings - 开始初始化数据库环境,路径为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/】
+2016-08-06 09:31:57,069 INFO  autogen.Settings - 找到DB属性配置文件,文件名为【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】
+2016-08-06 09:31:57,073 WARN  autogen.Settings - 模版路径：config/
+2016-08-06 09:31:57,073 WARN  autogen.Settings - 代码生成输出路径：/Users/ddr/git/test-projects/cloud-ibator/gendir/
+2016-08-06 09:31:57,073 INFO  autogen.Settings - 代码生成环境配置信息如下：
+2016-08-06 09:31:57,073 INFO  autogen.Settings - DB_USER=dev
+2016-08-06 09:31:57,073 INFO  autogen.Settings - JAVA_PACKAGE=com.ichrono.admin.model
+2016-08-06 09:31:57,073 INFO  autogen.Settings - DB_NAME=yfy_user_role
+2016-08-06 09:31:57,073 INFO  autogen.Settings - DB_PWD=123456
+2016-08-06 09:31:57,074 INFO  autogen.Settings - DB_TYPE=Mysql
+2016-08-06 09:31:57,074 INFO  autogen.Settings - DB_SERVER=localhost
+2016-08-06 09:31:57,074 INFO  autogen.Settings - 结束初始化数据库代码生成环境【/Users/ddr/git/test-projects/cloud-ibator/target/classes/config/db.properties】！
+2016-08-06 09:31:57,075 INFO  autogen.DbConn - 初始化数据库[yfy_user_role]连接！
+2016-08-06 09:31:58,007 INFO  autogen.DbConn - 初始化数据库[yfy_user_role]连接【OK】！
+2016-08-06 09:31:58,028 INFO  autogen.DbConn - ===============================数据库支持的数据类型:
+2016-08-06 09:31:58,034 INFO  autogen.DbConn - 类型名称【BIT                 】SqlType【-7   】最大精度【1         】
+2016-08-06 09:31:58,037 INFO  autogen.DbConn - 类型名称【BOOL                】SqlType【-7   】最大精度【1         】
+2016-08-06 09:31:58,037 INFO  autogen.DbConn - 类型名称【TINYINT             】SqlType【-6   】最大精度【3         】
+2016-08-06 09:31:58,042 INFO  autogen.DbConn - 类型名称【TINYINT UNSIGNED    】SqlType【-6   】最大精度【3         】
+2016-08-06 09:31:58,044 INFO  autogen.DbConn - 类型名称【BIGINT              】SqlType【-5   】最大精度【19        】
+2016-08-06 09:31:58,044 INFO  autogen.DbConn - 类型名称【BIGINT UNSIGNED     】SqlType【-5   】最大精度【20        】
+2016-08-06 09:31:58,045 INFO  autogen.DbConn - 类型名称【LONG VARBINARY      】SqlType【-4   】最大精度【16777215  】
+2016-08-06 09:31:58,045 INFO  autogen.DbConn - 类型名称【MEDIUMBLOB          】SqlType【-4   】最大精度【16777215  】
+2016-08-06 09:31:58,055 INFO  autogen.DbConn - 类型名称【LONGBLOB            】SqlType【-4   】最大精度【2147483647】
+2016-08-06 09:31:58,056 INFO  autogen.DbConn - 类型名称【BLOB                】SqlType【-4   】最大精度【65535     】
+2016-08-06 09:31:58,062 INFO  autogen.DbConn - 类型名称【TINYBLOB            】SqlType【-4   】最大精度【255       】
+2016-08-06 09:31:58,063 INFO  autogen.DbConn - 类型名称【VARBINARY           】SqlType【-3   】最大精度【65535     】
+2016-08-06 09:31:58,068 INFO  autogen.DbConn - 类型名称【BINARY              】SqlType【-2   】最大精度【255       】
+2016-08-06 09:31:58,080 INFO  autogen.DbConn - 类型名称【LONG VARCHAR        】SqlType【-1   】最大精度【16777215  】
+2016-08-06 09:31:58,083 INFO  autogen.DbConn - 类型名称【MEDIUMTEXT          】SqlType【-1   】最大精度【16777215  】
+2016-08-06 09:31:58,083 INFO  autogen.DbConn - 类型名称【LONGTEXT            】SqlType【-1   】最大精度【2147483647】
+2016-08-06 09:31:58,084 INFO  autogen.DbConn - 类型名称【TEXT                】SqlType【-1   】最大精度【65535     】
+2016-08-06 09:31:58,085 INFO  autogen.DbConn - 类型名称【TINYTEXT            】SqlType【-1   】最大精度【255       】
+2016-08-06 09:31:58,085 INFO  autogen.DbConn - 类型名称【CHAR                】SqlType【1    】最大精度【255       】
+2016-08-06 09:31:58,086 INFO  autogen.DbConn - 类型名称【NUMERIC             】SqlType【2    】最大精度【65        】
+2016-08-06 09:31:58,087 INFO  autogen.DbConn - 类型名称【DECIMAL             】SqlType【3    】最大精度【65        】
+2016-08-06 09:31:58,088 INFO  autogen.DbConn - 类型名称【INTEGER             】SqlType【4    】最大精度【10        】
+2016-08-06 09:31:58,089 INFO  autogen.DbConn - 类型名称【INTEGER UNSIGNED    】SqlType【4    】最大精度【10        】
+2016-08-06 09:31:58,089 INFO  autogen.DbConn - 类型名称【INT                 】SqlType【4    】最大精度【10        】
+2016-08-06 09:31:58,090 INFO  autogen.DbConn - 类型名称【INT UNSIGNED        】SqlType【4    】最大精度【10        】
+2016-08-06 09:31:58,091 INFO  autogen.DbConn - 类型名称【MEDIUMINT           】SqlType【4    】最大精度【7         】
+2016-08-06 09:31:58,092 INFO  autogen.DbConn - 类型名称【MEDIUMINT UNSIGNED  】SqlType【4    】最大精度【8         】
+2016-08-06 09:31:58,092 INFO  autogen.DbConn - 类型名称【SMALLINT            】SqlType【5    】最大精度【5         】
+2016-08-06 09:31:58,093 INFO  autogen.DbConn - 类型名称【SMALLINT UNSIGNED   】SqlType【5    】最大精度【5         】
+2016-08-06 09:31:58,094 INFO  autogen.DbConn - 类型名称【FLOAT               】SqlType【7    】最大精度【10        】
+2016-08-06 09:31:58,094 INFO  autogen.DbConn - 类型名称【DOUBLE              】SqlType【8    】最大精度【17        】
+2016-08-06 09:31:58,094 INFO  autogen.DbConn - 类型名称【DOUBLE PRECISION    】SqlType【8    】最大精度【17        】
+2016-08-06 09:31:58,095 INFO  autogen.DbConn - 类型名称【REAL                】SqlType【8    】最大精度【17        】
+2016-08-06 09:31:58,096 INFO  autogen.DbConn - 类型名称【VARCHAR             】SqlType【12   】最大精度【65535     】
+2016-08-06 09:31:58,097 INFO  autogen.DbConn - 类型名称【ENUM                】SqlType【12   】最大精度【65535     】
+2016-08-06 09:31:58,097 INFO  autogen.DbConn - 类型名称【SET                 】SqlType【12   】最大精度【64        】
+2016-08-06 09:31:58,098 INFO  autogen.DbConn - 类型名称【DATE                】SqlType【91   】最大精度【0         】
+2016-08-06 09:31:58,098 INFO  autogen.DbConn - 类型名称【TIME                】SqlType【92   】最大精度【0         】
+2016-08-06 09:31:58,098 INFO  autogen.DbConn - 类型名称【DATETIME            】SqlType【93   】最大精度【0         】
+2016-08-06 09:31:58,098 INFO  autogen.DbConn - 类型名称【TIMESTAMP           】SqlType【93   】最大精度【0         】
+2016-08-06 09:31:58,099 INFO  autogen.DbConn - 数据库类型【MySQL】数据库版本【5.7.11】数据库驱动名称【MySQL Connector Java】数据库驱动程序版本【mysql-connector-java-5.1.38 ( Revision: fe541c166cec739c74cc727c5da96c1028b4834a )】
+2016-08-06 09:31:58,113 INFO  autogen.AllTableInf - ============================获取所有表结构信息：
+2016-08-06 09:31:58,113 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【dept                     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:58,114 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【login_user               】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:58,115 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【menu                     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:58,116 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role                     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:58,116 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role_menu                】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:58,116 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role_menu_opt_detail     】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:58,117 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【user_role                】表类型【TABLE     】表注释【                              】
+2016-08-06 09:31:58,117 INFO  autogen.AllTableInf - ============================获取所有表主键信息：
+2016-08-06 09:31:58,122 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【dept                     】主键列名【dept_id   】主键列序号【1 】主键名称【PRIMARY        】
+2016-08-06 09:31:58,125 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【login_user               】主键列名【user_id   】主键列序号【1 】主键名称【PRIMARY        】
+2016-08-06 09:31:58,129 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【menu                     】主键列名【menu_id   】主键列序号【1 】主键名称【PRIMARY        】
+2016-08-06 09:31:58,134 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role                     】主键列名【role_id   】主键列序号【1 】主键名称【PRIMARY        】
+2016-08-06 09:31:58,137 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role_menu                】主键列名【role_menu_】主键列序号【1 】主键名称【PRIMARY        】
+2016-08-06 09:31:58,144 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【role_menu_opt_detail     】主键列名【role_menu_】主键列序号【1 】主键名称【PRIMARY        】
+2016-08-06 09:31:58,148 INFO  autogen.AllTableInf - Schema名【yfy_user_r】表名【user_role                】主键列名【user_role_】主键列序号【1 】主键名称【PRIMARY        】
+2016-08-06 09:31:58,186 INFO  autogen.Gen - 共有7个表需要生成数据访问层.
+2016-08-06 09:31:58,187 INFO  autogen.Gen - 第1个表[dept]sqlMap正在生成中...
+2016-08-06 09:31:58,188 INFO  autogen.AllTableInf - 开始生成表对象，表名：dept
+2016-08-06 09:31:58,230 INFO  autogen.AllTableInf - 表名【dept                     】列名【dept_id        】列sqltype【4  】列typename【INT UNSIGN】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【YES  】
+2016-08-06 09:31:58,233 INFO  autogen.AllTableInf - 表名【dept                     】列名【name           】列sqltype【12 】列typename【VARCHAR   】列precision【100  】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,234 INFO  autogen.AllTableInf - 表名【dept                     】列名【parent_id      】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,235 INFO  autogen.AllTableInf - 表名【dept                     】列名【position       】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【在同一级部门下的显示排位】列defaultValue【10   】列isAutocrement【NO   】
+2016-08-06 09:31:58,239 INFO  autogen.AllTableInf - 表名【dept                     】列名【create_time    】列sqltype【93 】列typename【DATETIME  】列precision【19   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【创建时间        】列defaultValue【2016-】列isAutocrement【NO   】
+2016-08-06 09:31:58,241 INFO  autogen.AllTableInf - 生成表对象成功，表名：dept
+2016-08-06 09:31:58,395 INFO  util.VelocityTemplate - 初始化Velocity成功，配置路径为：/Users/ddr/git/test-projects/cloud-ibator/target/classes/velocity.properties
+2016-08-06 09:31:58,431 INFO  autogen.Gen - Dept.java
+2016-08-06 09:31:58,467 INFO  autogen.Gen - 第2个表[login_user]sqlMap正在生成中...
+2016-08-06 09:31:58,467 INFO  autogen.AllTableInf - 开始生成表对象，表名：login_user
+2016-08-06 09:31:58,474 INFO  autogen.AllTableInf - 表名【login_user               】列名【user_id        】列sqltype【4  】列typename【INT UNSIGN】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【用户的自增id号】列defaultValue【     】列isAutocrement【YES  】
+2016-08-06 09:31:58,474 INFO  autogen.AllTableInf - 表名【login_user               】列名【login_name     】列sqltype【12 】列typename【VARCHAR   】列precision【80   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【登录名           】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,474 INFO  autogen.AllTableInf - 表名【login_user               】列名【login_pwd      】列sqltype【12 】列typename【VARCHAR   】列precision【100  】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【登录密码        】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,475 INFO  autogen.AllTableInf - 表名【login_user               】列名【status         】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【0为未激活，1为正常，-1为禁止】列defaultValue【1    】列isAutocrement【NO   】
+2016-08-06 09:31:58,475 INFO  autogen.AllTableInf - 表名【login_user               】列名【full_name      】列sqltype【12 】列typename【VARCHAR   】列precision【50   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【全名              】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,475 INFO  autogen.AllTableInf - 表名【login_user               】列名【mobile         】列sqltype【12 】列typename【VARCHAR   】列precision【20   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【手机号           】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,476 INFO  autogen.AllTableInf - 表名【login_user               】列名【email          】列sqltype【12 】列typename【VARCHAR   】列precision【100  】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【email               】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,476 INFO  autogen.AllTableInf - 表名【login_user               】列名【qq             】列sqltype【12 】列typename【VARCHAR   】列precision【50   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【QQ                  】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,476 INFO  autogen.AllTableInf - 表名【login_user               】列名【last_login_time】列sqltype【93 】列typename【DATETIME  】列precision【19   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【最后登录时间  】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,477 INFO  autogen.AllTableInf - 表名【login_user               】列名【last_login_ip  】列sqltype【12 】列typename【VARCHAR   】列precision【30   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,477 INFO  autogen.AllTableInf - 表名【login_user               】列名【dept_id        】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【部门id            】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,477 INFO  autogen.AllTableInf - 表名【login_user               】列名【create_time    】列sqltype【93 】列typename【DATETIME  】列precision【19   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【创建时间        】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,478 INFO  autogen.AllTableInf - 生成表对象成功，表名：login_user
+2016-08-06 09:31:58,487 INFO  autogen.Gen - LoginUser.java
+2016-08-06 09:31:58,509 INFO  autogen.Gen - 第3个表[menu]sqlMap正在生成中...
+2016-08-06 09:31:58,509 INFO  autogen.AllTableInf - 开始生成表对象，表名：menu
+2016-08-06 09:31:58,514 INFO  autogen.AllTableInf - 表名【menu                     】列名【menu_id        】列sqltype【4  】列typename【INT UNSIGN】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【YES  】
+2016-08-06 09:31:58,515 INFO  autogen.AllTableInf - 表名【menu                     】列名【name           】列sqltype【12 】列typename【VARCHAR   】列precision【100  】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,515 INFO  autogen.AllTableInf - 表名【menu                     】列名【url            】列sqltype【12 】列typename【VARCHAR   】列precision【1000 】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,515 INFO  autogen.AllTableInf - 表名【menu                     】列名【parent_id      】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,516 INFO  autogen.AllTableInf - 表名【menu                     】列名【position       】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【在同一级菜单下的排位】列defaultValue【10   】列isAutocrement【NO   】
+2016-08-06 09:31:58,516 INFO  autogen.AllTableInf - 表名【menu                     】列名【status         】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【0为失效，1为有效】列defaultValue【1    】列isAutocrement【NO   】
+2016-08-06 09:31:58,516 INFO  autogen.AllTableInf - 表名【menu                     】列名【create_time    】列sqltype【93 】列typename【DATETIME  】列precision【19   】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【创建时间        】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,517 INFO  autogen.AllTableInf - 生成表对象成功，表名：menu
+2016-08-06 09:31:58,524 INFO  autogen.Gen - Menu.java
+2016-08-06 09:31:58,547 INFO  autogen.Gen - 第4个表[role]sqlMap正在生成中...
+2016-08-06 09:31:58,547 INFO  autogen.AllTableInf - 开始生成表对象，表名：role
+2016-08-06 09:31:58,554 INFO  autogen.AllTableInf - 表名【role                     】列名【role_id        】列sqltype【4  】列typename【INT UNSIGN】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【YES  】
+2016-08-06 09:31:58,554 INFO  autogen.AllTableInf - 表名【role                     】列名【name           】列sqltype【12 】列typename【VARCHAR   】列precision【100  】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,555 INFO  autogen.AllTableInf - 表名【role                     】列名【status         】列sqltype【5  】列typename【SMALLINT  】列precision【5    】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【0为失效，1为有效】列defaultValue【1    】列isAutocrement【NO   】
+2016-08-06 09:31:58,555 INFO  autogen.AllTableInf - 表名【role                     】列名【remark         】列sqltype【12 】列typename【VARCHAR   】列precision【200  】列scale【0    】列isNullable【1 】列isNullable2【YES】列comment【备注              】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,555 INFO  autogen.AllTableInf - 表名【role                     】列名【create_time    】列sqltype【93 】列typename【DATETIME  】列precision【19   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,556 INFO  autogen.AllTableInf - 生成表对象成功，表名：role
+2016-08-06 09:31:58,564 INFO  autogen.Gen - Role.java
+2016-08-06 09:31:58,583 INFO  autogen.Gen - 第5个表[role_menu]sqlMap正在生成中...
+2016-08-06 09:31:58,583 INFO  autogen.AllTableInf - 开始生成表对象，表名：role_menu
+2016-08-06 09:31:58,587 INFO  autogen.AllTableInf - 表名【role_menu                】列名【role_menu_id   】列sqltype【-5 】列typename【BIGINT    】列precision【19   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【YES  】
+2016-08-06 09:31:58,588 INFO  autogen.AllTableInf - 表名【role_menu                】列名【role_id        】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,588 INFO  autogen.AllTableInf - 表名【role_menu                】列名【menu_id        】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,588 INFO  autogen.AllTableInf - 生成表对象成功，表名：role_menu
+2016-08-06 09:31:58,597 INFO  autogen.Gen - RoleMenu.java
+2016-08-06 09:31:58,641 INFO  autogen.Gen - 第6个表[role_menu_opt_detail]sqlMap正在生成中...
+2016-08-06 09:31:58,659 INFO  autogen.AllTableInf - 开始生成表对象，表名：role_menu_opt_detail
+2016-08-06 09:31:58,675 INFO  autogen.AllTableInf - 表名【role_menu_opt_detail     】列名【role_menu_opt_i】列sqltype【-5 】列typename【BIGINT UNS】列precision【20   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【id                  】列defaultValue【     】列isAutocrement【YES  】
+2016-08-06 09:31:58,676 INFO  autogen.AllTableInf - 表名【role_menu_opt_detail     】列名【role_id        】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【权限号           】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,678 INFO  autogen.AllTableInf - 表名【role_menu_opt_detail     】列名【menu_id        】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【菜单id号         】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,687 INFO  autogen.AllTableInf - 表名【role_menu_opt_detail     】列名【data_query     】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【查                 】列defaultValue【1    】列isAutocrement【NO   】
+2016-08-06 09:31:58,691 INFO  autogen.AllTableInf - 表名【role_menu_opt_detail     】列名【data_add       】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【增                 】列defaultValue【0    】列isAutocrement【NO   】
+2016-08-06 09:31:58,693 INFO  autogen.AllTableInf - 表名【role_menu_opt_detail     】列名【data_update    】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【改                 】列defaultValue【0    】列isAutocrement【NO   】
+2016-08-06 09:31:58,700 INFO  autogen.AllTableInf - 表名【role_menu_opt_detail     】列名【data_delete    】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【删                 】列defaultValue【0    】列isAutocrement【NO   】
+2016-08-06 09:31:58,700 INFO  autogen.AllTableInf - 表名【role_menu_opt_detail     】列名【data_export    】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【是否能导出     】列defaultValue【0    】列isAutocrement【NO   】
+2016-08-06 09:31:58,700 INFO  autogen.AllTableInf - 生成表对象成功，表名：role_menu_opt_detail
+2016-08-06 09:31:58,715 INFO  autogen.Gen - RoleMenuOptDetail.java
+2016-08-06 09:31:58,745 INFO  autogen.Gen - 第7个表[user_role]sqlMap正在生成中...
+2016-08-06 09:31:58,745 INFO  autogen.AllTableInf - 开始生成表对象，表名：user_role
+2016-08-06 09:31:58,750 INFO  autogen.AllTableInf - 表名【user_role                】列名【user_role_id   】列sqltype【-5 】列typename【BIGINT UNS】列precision【20   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【YES  】
+2016-08-06 09:31:58,751 INFO  autogen.AllTableInf - 表名【user_role                】列名【user_id        】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,751 INFO  autogen.AllTableInf - 表名【user_role                】列名【role_id        】列sqltype【4  】列typename【INT       】列precision【10   】列scale【0    】列isNullable【0 】列isNullable2【NO 】列comment【                    】列defaultValue【     】列isAutocrement【NO   】
+2016-08-06 09:31:58,751 INFO  autogen.AllTableInf - 生成表对象成功，表名：user_role
+2016-08-06 09:31:58,760 INFO  autogen.Gen - UserRole.java
+2016-08-06 09:31:58,801 INFO  autogen.Gen - 实际生成7个表的sqlMap！
+2016-08-06 09:31:58,803 INFO  autogen.Gen - 结束执行DAO代码生成===========================

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="${tbb.className}">
+
+	<sql id="tableName" >
+		${tbb.tableName}
+	</sql>
+	
+	<sql id="selectColumns">
+	select
+#foreach($cb in $tbb.colList)
+	$!{cb.colName} $!{cb.propertyName} #{if}($velocityCount != $tbb.colList.size()),
+#{end}
+#end
+    FROM 
+    <include refid="tableName"/> t
+  	</sql>
+  	
+  	<!-- 添加 -->
+	<insert id="create" parameterType="$!{gb.packageName}.${tbb.className}" useGeneratedKeys="true"  keyProperty="$!{tbb.pkcol.propertyName}">
+		INSERT INTO <include refid="tableName"/> 
+		(#foreach($cb in $tbb.colList)$!{cb.colName}#{if}($velocityCount != $tbb.colList.size()),#{end}#end)
+		VALUES
+		(#foreach($cb in $tbb.colList)#{$!{cb.propertyName}} #{if}($velocityCount != $tbb.colList.size()),#{end}#end)
+	</insert>
+	
+	<!-- 批量 添加 -->
+	<insert id="create_BATCH"  parameterType="List" >
+		INSERT INTO <include refid="tableName"/> 
+		(#foreach($cb in $tbb.colList)$!{cb.colName}#{if}($velocityCount != $tbb.colList.size()),#{end}#end)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#foreach($cb in $tbb.colList)#{item.$!{cb.propertyName}} #{if}($velocityCount != $tbb.colList.size()),#{end}#end)
+		</foreach>
+	</insert>
+	
+	<delete id="deleteById" parameterType="${tbb.pkcol.propertyType}">
+		DELETE FROM 
+		<include refid="tableName"/> 
+		WHERE $!{tbb.pkcol.colName} = #{$!{tbb.pkcol.propertyName}}
+  	</delete>
+	#* 
+	<!-- 批量删除 -->
+	<delete id="deleteById_BATCH" parameterType="${tbb.pkcol.propertyType}">
+		DELETE FROM
+		<include refid="tableName" />
+		where $!{tbb.pkcol.colName}
+		in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">   
+        #{item}   
+    	</foreach> 
+	</delete>
+	*#
+	<select id="loadAll" resultType="$!{gb.packageName}.${tbb.className}">
+		<include refid="selectColumns" />
+	</select>
+	
+	<select id="findById" resultType="$!{gb.packageName}.${tbb.className}" 
+	parameterType="${tbb.pkcol.propertyType}">
+		<include refid="selectColumns"/>   
+		WHERE $!{tbb.pkcol.colName} = #{$!{tbb.pkcol.propertyName}}
+	</select>
+	
+	<sql id="pageConditions">
+	<where>
+	#foreach($cb in $tbb.colList)
+	#if($cb.propertyType=="String")
+	  	<if test="$!{cb.propertyName} != '' and $!{cb.propertyName} != null">AND $!{cb.colName} = #{$!{cb.propertyName}}</if>
+	#else
+	  	<if test="$!{cb.propertyName} != null">AND $!{cb.colName} = #{$!{cb.propertyName}}</if>
+	#end
+	#end
+	</where>
+	</sql>
+	
+	<!-- 分页查询 -->
+	<select id="findPage" resultType="$!{gb.packageName}.${tbb.className}"
+		parameterType="$!{gb.packageName}.${tbb.className}">
+		<include refid="selectColumns"/> 
+		<include refid="pageConditions"/>
+		<if test="orderStr != '' and orderStr != null">
+				ORDER BY ${orderStr}
+		</if>
+	</select>
+	
+	<select id="findPage_COUNT" resultType="int" parameterType="$!{gb.packageName}.${tbb.className}"> 
+		select count(1) from
+		<include refid="tableName" />
+		<include refid="pageConditions" />
+	</select>
+	
+	<sql id="update_sql">
+		UPDATE 
+		<include refid="tableName"/> 
+		<set>
+#foreach($cb in $tbb.colList)
+	#if($!{cb.colName}!=$!{tbb.pkcol.colName})
+  		<if test="$!{cb.propertyName} != null">$!{cb.colName} = #{$!{cb.propertyName}} ,</if>
+	#end
+#end
+		</set>
+		WHERE $!{tbb.pkcol.colName} = #{$!{tbb.pkcol.propertyName}}
+	</sql>
+		
+	<update id="update" parameterType="$!{gb.packageName}.${tbb.className}">
+		<include refid="update_sql"/>
+	</update>	
+	#* 
+	<!-- 批量更新 -->
+	<update id="update_BATCH" parameterType="$!{gb.packageName}.${tbb.className}">
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			<include refid="update_sql"/>
+		 </foreach>
+	</update>
+	*#	
+	
+
+</mapper>
